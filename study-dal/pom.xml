@@ -4,17 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <artifactId>spring-cloud-study</artifactId>
-        <groupId>com.study.example</groupId>
-        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.github.brilliant-zhong</groupId>
+        <version>1.0.0-RELEASE</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-    <groupId>com.study.dal</groupId>
     <artifactId>study-dal</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-    <name>study-dal</name>
-    <description>study-dal project for Spring Boot</description>
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,16 +19,18 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>study-common</artifactId>
+        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

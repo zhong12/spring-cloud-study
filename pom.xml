@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.study.example</groupId>
+    <groupId>com.github.brilliant-zhong</groupId>
     <artifactId>spring-cloud-study</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0-RELEASE</version>
     <packaging>pom</packaging>
     <name>spring-cloud-study</name>
     <description>spring-cloud-study project for Spring Boot</description>
@@ -18,7 +18,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.4.4</version>
+        <version>2.4.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -154,6 +154,18 @@
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.api.version}</version>
             </dependency>
+
+            <!--study-->
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-common</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-dal</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -171,4 +183,64 @@
         </repository>
     </repositories>
 
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.18.1</version>
+                <configuration>
+                    <skip>true</skip>
+                    <includes>
+                        <include>**/*Tester.java</include>
+                        <include>**/*Test.java</include>
+                    </includes>
+                </configuration>
+            </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.apache.maven.plugins</groupId>-->
+<!--                <artifactId>maven-jar-plugin</artifactId>-->
+<!--                <version>3.0.2</version>-->
+<!--                <configuration>-->
+<!--                    <archive>-->
+<!--                        <manifestEntries>-->
+<!--                            &lt;!&ndash; 项目版本号 &ndash;&gt;-->
+<!--                            <Project-Version>${project.version}</Project-Version>-->
+<!--                            &lt;!&ndash; 时间戳 &ndash;&gt;-->
+<!--                            <Timestamp>${maven.build.timestamp}</Timestamp>-->
+<!--                        </manifestEntries>-->
+<!--                    </archive>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+            <!-- 统一修改版本 mvn versions:set -DnewVersion=1.1-SNAPSHOT -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>versions-maven-plugin</artifactId>
+                <configuration>
+                    <generateBackupPoms>false</generateBackupPoms>
+                </configuration>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <!-- 要将源码放上去，需要加入这个插件 -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>2.1</version>
+                    <configuration>
+                        <attach>true</attach>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
