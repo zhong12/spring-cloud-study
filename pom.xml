@@ -4,11 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.study.example</groupId>
-    <artifactId>springcloud-study</artifactId>
+    <artifactId>spring-cloud-study</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>study</name>
-    <description>Study project for Spring Boot</description>
+    <name>spring-cloud-study</name>
+    <description>spring-cloud-study project for Spring Boot</description>
 
     <modules>
         <module>study-dal</module>
@@ -156,4 +156,19 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <repositories>
+        <repository>
+            <id>ali-maven</id>
+            <name>ali-yun-maven</name>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
 </project>
