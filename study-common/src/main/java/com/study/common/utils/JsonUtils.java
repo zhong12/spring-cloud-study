@@ -28,7 +28,7 @@ public class JsonUtils {
     public static <T> String parseJson(T t) {
         if (null == t) {
             log.error("JsonUtil.parseJson error: object is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "object is null");
+            throw new BizException(ErrorEnum.PARAM_NOT_EXIST);
         }
         return JSON.toJSONString(t);
     }
@@ -42,7 +42,7 @@ public class JsonUtils {
     public static <T> T parseObject(String json, Class<T> clazz) {
         if (StringUtils.isEmpty(json)) {
             log.error("JsonUtil.parseObject error: json is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "json is null");
+            throw new BizException(ErrorEnum.PARAM_NOT_EXIST);
         }
         JSONObject jsonObject = JSONObject.parseObject(json);
         return JSON.toJavaObject(jsonObject, clazz);
@@ -58,7 +58,7 @@ public class JsonUtils {
     public static JSONObject parseJson(String str) {
         if (StringUtils.isEmpty(str)) {
             log.error("JsonUtil.parseObject error: str is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "str is null");
+            throw new BizException(ErrorEnum.JSON_ERROR);
         }
         return JSONObject.parseObject(str);
     }
@@ -73,7 +73,7 @@ public class JsonUtils {
     public static <K, V> Map<K, V> jsonToHashMap(String json) {
         if (StringUtils.isEmpty(json)) {
             log.error("JsonUtil.jsonToHashMap error: json is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "json is null");
+            throw new BizException(ErrorEnum.JSON_ERROR);
         }
         JSONObject jsonObject = JSONObject.parseObject(json);
         Map<K, V> params = JSONObject.parseObject(jsonObject.toJSONString(),
@@ -91,7 +91,7 @@ public class JsonUtils {
     public static Map<String, Object> objToMap(Object obj) {
         if (null == obj) {
             log.error("JsonUtil.objToMap error: obj is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "obj is null");
+            throw new BizException(ErrorEnum.JSON_ERROR);
         }
         String json = parseJson(obj);
         return parseObject(json, Map.class);
@@ -106,8 +106,8 @@ public class JsonUtils {
      */
     public static JSONObject parseByKeyJsonObject(String key, String str) {
         if (StringUtils.isEmpty(str) || StringUtils.isEmpty(key)) {
-            log.error("JsonUtil.parseObject error: str/key is null");
-            throw new BizException(ErrorEnum.JSON_ERROR, "str/key is null");
+            log.error("JsonUtil.parseByKeyJsonObject error: str/key is null");
+            throw new BizException(ErrorEnum.JSON_ERROR);
         }
         JSONObject jsonObject = parseJson(str);
         if (!jsonObject.isEmpty()) {

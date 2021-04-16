@@ -5,12 +5,14 @@ package com.study.common.exception;
  */
 public enum ErrorEnum {
     SUCCESS(0, "success"),
-    NOT_EXIST(1001, "{0} not exist"),
-    HTTP_ERROR(1002, "http fail:{0}"),
-    JSON_ERROR(1003, "json fail:{0}"),
-    DATE_ERROR(1004, "date fail:{0}"),
-    JS_ERROR(1005, "analysis js fail:{0}"),
-    LOGIN_ERROR(1006, "login fail:{0}"),
+    SYSTEM_ERROR(-1, "system error"),
+    PARAM_NOT_EXIST(1001, "param not exist"),
+    HTTP_ERROR(1002, "http fail"),
+    JSON_ERROR(1003, "json fail"),
+    DATE_ERROR(1004, "date fail"),
+    JS_ERROR(1005, "analysis js fail"),
+    LOGIN_ERROR(1006, "login fail"),
+    MD5_ERROR(1007, "md5 fail"),
     ;
     private Integer code;
     private String message;
