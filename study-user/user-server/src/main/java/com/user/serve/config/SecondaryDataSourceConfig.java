@@ -2,6 +2,7 @@ package com.user.serve.config;
 
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.annotation.MapperScan;
@@ -20,6 +21,7 @@ import javax.sql.DataSource;
  * @Description:
  * @Version: 1.0
  */
+@Slf4j
 @Configuration
 @MapperScan(basePackages = "com.user.dal.mapper.slave", sqlSessionFactoryRef = "secondarySqlSessionFactory")
 public class SecondaryDataSourceConfig {
@@ -31,7 +33,7 @@ public class SecondaryDataSourceConfig {
     @Bean(name = "secondaryDataSource")
     @ConfigurationProperties(prefix = "spring.datasource.secondary")
     public HikariDataSource getSecondaryDateSource() {
-        System.out.println("secondaryDataSource");
+        log.info("secondaryDataSource init load……");
         return new HikariDataSource();
     }
 
@@ -44,10 +46,7 @@ public class SecondaryDataSourceConfig {
     public SqlSessionFactory mysqlSqlSessionFactory(@Qualifier("secondaryDataSource") DataSource datasource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(datasource);
-        // 设置Mybatis全局配置路径
-//        bean.setConfigLocation(new ClassPathResource("mybatis-config.xml"));
-        bean.setMapperLocations(
-                new PathMatchingResourcePatternResolver().getResources("classpath*:mappers/local/*.xml"));
+        bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/**/*Mapper.xml"));
         return bean.getObject();
     }
 

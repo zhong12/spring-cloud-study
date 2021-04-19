@@ -8,6 +8,7 @@
         <version>1.0.0-RELEASE</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <packaging>jar</packaging>
     <artifactId>study-redis-cache</artifactId>
     <dependencies>
         <dependency>
@@ -33,14 +34,4 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
 </project>

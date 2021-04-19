@@ -32,10 +32,6 @@
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>io.springfox</groupId>
@@ -52,6 +48,10 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>user-server</finalName>
+                    <mainClass>com.user.serve.UserServeApplication</mainClass>
+                </configuration>
             </plugin>
         </plugins>
     </build>
