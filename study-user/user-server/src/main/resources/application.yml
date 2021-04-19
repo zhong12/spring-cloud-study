@@ -1,0 +1,59 @@
+server:
+  port: 8081 #服务端口
+  datasource:
+    primary:
+      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: ${db.username:root}
+      password: ${db.password:123456}
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+        #      connection-test-query: SELECT 1    #连接测试查询
+        #      validation-timeout: 5000
+        #      pool-name: DddDataSource
+        #空闲连接超时时间，默认值600000（10分钟），大于等于max-lifetime且max-lifetime>0，会被重置为0；不等于0且小于10秒，会被重置为10秒。
+        idle-timeout: 80000
+        #连接超时时间:毫秒，小于250毫秒，否则被重置为默认值30秒
+        connection-timeout: 80000
+        #连接最大存活时间.不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+        max-lifetime: 80000
+        #最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+        minimum-idle: 30
+        #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+        maximum-pool-size: 60
+        #用来设置连接被占用的超时时间，单位为毫秒，默认为0，表示禁用连接泄露检测。如果大于0且不是单元测试，则进一步判断：(leakDetectionThreshold < SECONDS.toMillis(2)
+        # or (leakDetectionThreshold > maxLifetime && maxLifetime > 0)，会被重置为0 . 即如果要生效则必须>0，同时满足：不能小于2秒，而且当maxLifetime > 0时不能大于maxLifetime，
+        # 该值默认为1800000，即30分钟。
+        leak-detection-threshold: 100000
+
+    secondary:
+      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface1?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: ${db.username:root}
+      password: ${db.password:123456}
+      driver-class-name: com.mysql.jdbc.Driver
+      hikari:
+        idle-timeout: 80000  #空闲连接超时时间，默认值600000（10分钟），大于等于max-lifetime且max-lifetime>0，会被重置为0；不等于0且小于10秒，会被重置为10秒。
+        connection-timeout: 80000 #连接超时时间:毫秒，小于250毫秒，否则被重置为默认值30秒
+        max-lifetime: 80000 #连接最大存活时间.不等于0且小于30秒，会被重置为默认值30分钟.设置应该比mysql设置的超时时间短
+        minimum-idle: 30  #最小空闲连接，默认值10，小于0或大于maximum-pool-size，都会重置为maximum-pool-size
+        maximum-pool-size: 60  #最大连接数，小于等于0会被重置为默认值10；大于零小于1会被重置为minimum-idle的值
+        leak-detection-threshold: 100000 #用来设置连接被占用的超时时间，单位为毫秒，默认为0，表示禁用连接泄露检测。如果大于0且不是单元测试，则进一步判断：(leakDetectionThreshold < SECONDS.toMillis(2) or (leakDetectionThreshold > maxLifetime && maxLifetime > 0)，会被重置为0 . 即如果要生效则必须>0，同时满足：不能小于2秒，而且当maxLifetime > 0时不能大于maxLifetime，该值默认为1800000，即30分钟。
+
+    flyway:
+      # 版本迁移位置
+      locations: classpath:db/migration
+      init-sqls:
+        - SET @OLD_UNIQUE_CHECKS = @@UNIQUE_CHECKS, UNIQUE_CHECKS = 0;
+        - SET @OLD_FOREIGN_KEY_CHECKS = @@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS = 0;
+        - SET @OLD_SQL_MODE = @@SQL_MODE, SQL_MODE =
+          'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+        - CREATE SCHEMA IF NOT EXISTS `{schema}` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+      table: flyway_schema_history
+      enabled: false
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: user-serve
