@@ -1,9 +1,9 @@
-package com.study.dal.mapper.das.impl;
+package com.user.dal.mapper.das.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.study.dal.entity.Config;
-import com.study.dal.mapper.das.ConfigDas;
-import com.study.dal.mapper.master.ConfigMapper;
+import com.user.dal.entity.Config;
+import com.user.dal.mapper.das.ConfigDas;
+import com.user.dal.mapper.master.ConfigMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +16,5 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 public class ConfigDasImpl extends ServiceImpl<ConfigMapper, Config> implements ConfigDas {
+
 }

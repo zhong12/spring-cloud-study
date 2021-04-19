@@ -1,7 +1,7 @@
-package com.study.dal.mapper.das;
+package com.user.dal.mapper.das;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.study.dal.entity.Config;
+import com.user.dal.entity.Config;
 
 /**
  * @Author: zj

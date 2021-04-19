@@ -11,9 +11,12 @@
     <description>spring-cloud-study project for Spring Boot</description>
 
     <modules>
-        <module>study-dal</module>
         <module>study-common</module>
         <module>study-registry</module>
+        <module>study-user</module>
+        <module>study-config</module>
+        <module>study-mq</module>
+        <module>study-cache</module>
     </modules>
 
     <parent>
@@ -41,6 +44,7 @@
         <spring-security-oauth2.version>2.3.2.RELEASE</spring-security-oauth2.version>
         <mybatis.version>3.4.6</mybatis.version>
         <slf4j.api.version>1.7.7</slf4j.api.version>
+        <spring.cloud.study.version>1.0.0-RELEASE</spring.cloud.study.version>
     </properties>
 
     <dependencyManagement>
@@ -60,7 +64,12 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
+            <!-- spring boot redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <!-- spring cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

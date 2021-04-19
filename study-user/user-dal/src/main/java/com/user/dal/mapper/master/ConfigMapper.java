@@ -1,7 +1,7 @@
-package com.study.dal.mapper.master;
+package com.user.dal.mapper.master;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.study.dal.entity.Config;
+import com.user.dal.entity.Config;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.context.annotation.Primary;
 

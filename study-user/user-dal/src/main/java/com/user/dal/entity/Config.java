@@ -1,4 +1,4 @@
-package com.study.dal.entity;
+package com.user.dal.entity;
 
 import com.alibaba.fastjson.annotation.JSONField;
 import com.baomidou.mybatisplus.annotation.IdType;
