@@ -123,7 +123,7 @@ public class FlywayConfig {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             try {
                 preparedStatement.execute();
-                log.info("Deleted unsuccessful record in `evo_rcs`.`flyway_schema_history`!");
+                log.info("Deleted unsuccessful record in `evo_interface`.`flyway_schema_history`!");
                 flyway.migrate();
                 break;
             } catch (FlywayException e) {

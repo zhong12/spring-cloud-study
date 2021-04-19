@@ -64,6 +64,12 @@
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper</artifactId>
                 <version>${pagehelper.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.mybatis</groupId>
+                        <artifactId>mybatis</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -75,6 +81,12 @@
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>user-dal</artifactId>
                 <version>${spring.cloud.study.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic.datasource.boot.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

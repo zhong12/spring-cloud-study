@@ -1,5 +1,6 @@
 package com.user.dal.mapper.master;
 
+import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.user.dal.entity.Config;
 import org.apache.ibatis.annotations.Mapper;
@@ -12,6 +13,6 @@ import org.springframework.context.annotation.Primary;
  * @Version: 1.0
  */
 @Mapper
-@Primary
+@DS("master")
 public interface ConfigMapper extends BaseMapper<Config> {
 }
