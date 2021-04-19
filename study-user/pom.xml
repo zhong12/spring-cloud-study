@@ -73,7 +73,7 @@
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
-                <artifactId>study-dal</artifactId>
+                <artifactId>user-dal</artifactId>
                 <version>${spring.cloud.study.version}</version>
             </dependency>
         </dependencies>

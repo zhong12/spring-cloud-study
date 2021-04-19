@@ -23,17 +23,17 @@ import javax.sql.DataSource;
  */
 @Slf4j
 @Configuration
-@MapperScan(basePackages = "com.user.dal.mapper.slave", sqlSessionFactoryRef = "secondarySqlSessionFactory")
-public class SecondaryDataSourceConfig {
+@MapperScan(basePackages = "com.user.dal.mapper.slave", sqlSessionFactoryRef = "secondSqlSessionFactory")
+public class SecondDataSourceConfig {
     /**
      * @Bean 注册Bean对象
      * @Primary 表示默认数据源
      * @ConfigurationProperties 读取properties中的配置参数映射成为一个对象
      */
-    @Bean(name = "secondaryDataSource")
-    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    @Bean(name = "secondDataSource")
+    @ConfigurationProperties(prefix = "spring.datasource.second")
     public HikariDataSource getSecondaryDateSource() {
-        log.info("secondaryDataSource init load……");
+        log.info("secondDataSource init load……");
         return new HikariDataSource();
     }
 
@@ -42,16 +42,16 @@ public class SecondaryDataSourceConfig {
      * @return SqlSessionFactory
      * @Primary 默认SqlSessionFactory
      */
-    @Bean(name = "secondarySqlSessionFactory")
-    public SqlSessionFactory mysqlSqlSessionFactory(@Qualifier("secondaryDataSource") DataSource datasource) throws Exception {
+    @Bean(name = "secondSqlSessionFactory")
+    public SqlSessionFactory mysqlSqlSessionFactory(@Qualifier("secondDataSource") DataSource datasource) throws Exception {
         MybatisSqlSessionFactoryBean bean = new MybatisSqlSessionFactoryBean();
         bean.setDataSource(datasource);
         bean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath*:mybatis/**/*Mapper.xml"));
         return bean.getObject();
     }
 
-    @Bean("secondarySessionTemplate")
-    public SqlSessionTemplate mysqlSqlSessionTemplate(@Qualifier("secondarySqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
+    @Bean("secondSessionTemplate")
+    public SqlSessionTemplate mysqlSqlSessionTemplate(@Qualifier("secondSqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
         return new SqlSessionTemplate(sqlSessionFactory);
     }
 
@@ -60,8 +60,8 @@ public class SecondaryDataSourceConfig {
      *
      * @return
      */
-    @Bean(name = "secondaryTransactionManager")
-    public DataSourceTransactionManager secondaryTransactionManager(@Qualifier("secondaryDataSource") DataSource dataSource) {
+    @Bean(name = "secondTransactionManager")
+    public DataSourceTransactionManager secondaryTransactionManager(@Qualifier("secondDataSource") DataSource dataSource) {
         DataSourceTransactionManager dataSourceTransactionManager = new DataSourceTransactionManager();
         dataSourceTransactionManager.setDataSource(dataSource);
         return dataSourceTransactionManager;

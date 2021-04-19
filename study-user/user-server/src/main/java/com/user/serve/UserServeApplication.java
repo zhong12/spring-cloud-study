@@ -14,7 +14,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * @Version: 1.0
  */
 @EnableEurekaClient
-@SpringBootApplication(scanBasePackages = {"com.user","com.user.serve"},
+@SpringBootApplication(scanBasePackages = {"com.user.dal","com.user.serve"},
         exclude = {FlywayAutoConfiguration.class, JpaRepositoriesAutoConfiguration.class, DataSourceAutoConfiguration.class})
 public class UserServeApplication {
 
