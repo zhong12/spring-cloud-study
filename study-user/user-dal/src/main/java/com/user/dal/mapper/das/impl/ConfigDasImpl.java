@@ -3,7 +3,7 @@ package com.user.dal.mapper.das.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.user.dal.entity.Config;
 import com.user.dal.mapper.das.ConfigDas;
-import com.user.dal.mapper.master.ConfigMapper;
+import com.user.dal.mapper.dao.ConfigMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

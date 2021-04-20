@@ -1,4 +1,4 @@
-package com.user.dal.mapper.master;
+package com.user.dal.mapper.dao;
 
 import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
@@ -13,6 +13,5 @@ import org.springframework.context.annotation.Primary;
  * @Version: 1.0
  */
 @Mapper
-@DS("master")
 public interface ConfigMapper extends BaseMapper<Config> {
 }

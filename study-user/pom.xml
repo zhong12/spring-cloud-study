@@ -14,6 +14,12 @@
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-user</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+    </dependencies>
     <dependencyManagement>
         <dependencies>
             <!-- mysql driver -->
