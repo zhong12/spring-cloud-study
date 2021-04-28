@@ -28,5 +28,9 @@
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>mq-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
     </dependencies>
 </project>

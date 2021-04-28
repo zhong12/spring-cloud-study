@@ -66,10 +66,25 @@ mybatis-plus:
     cache-enabled: false
     call-setters-on-nulls: true
 
+# eureka
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://${eureka.ip:localhost}:${eureka.port:8761}/eureka/
 
+# rocketmq producer
+rocketmq:
+  producer:
+    isOnOff: ${queue.isOnOff:on}
+    groupName: ${spring.application.name}
+    nameSrvAddr: ${queue.ip:121.41.4.239}:${queue.port:9876}
+    maxMessageSize: ${queue.maxMessageSize:4096}
+    sendMsgTimeout: ${queue.sendMsgTimeout:3000}
+    topic: ${queue.topic:test}
+    tag: ${queue.tag:tag}
+    consumeThreadMax: ${queue.consumeThreadMax:64}
+    retryTimesWhenSendFailed: ${queue.retryTimesWhenSendFailed:2}
+
+# swagger
 swagger:
   enable: true

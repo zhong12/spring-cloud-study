@@ -11,6 +11,7 @@
     <modules>
         <module>user-dal</module>
         <module>user-server</module>
+        <module>user-web</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-user</artifactId>

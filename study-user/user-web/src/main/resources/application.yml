@@ -1,0 +1,25 @@
+server:
+  port: 8082 #服务端口
+spring:
+  application:
+    name: user-web
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.ip:localhost}:${eureka.port:8761}/eureka/
+
+#rocketmq consumer
+rocketmq:
+  consumer:
+    isOnOff: ${queue.isOnOff:on}
+    groupName: ${spring.application.name}
+    nameSrvAddr: ${queue.url:121.41.4.239}:${queue.port:9876}
+    topics: ${queue.topics}
+    consumeThreadMin: ${queue.consumeThreadMin:10}
+    consumeThreadMax: ${queue.consumeThreadMax:64}
+    consumeMessageBatchMaxSize: ${queue.consumeMessageBatchMaxSize:1}
+
+swagger:
+  enable: true
+
