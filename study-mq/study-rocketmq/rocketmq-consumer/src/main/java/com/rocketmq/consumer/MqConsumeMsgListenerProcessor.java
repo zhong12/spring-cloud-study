@@ -110,7 +110,7 @@ public class MqConsumeMsgListenerProcessor implements MessageListenerConcurrentl
                 log.error("Consumer service：" + entry.getValue().getClass().getName() + "not added on MQConsumeService annotation");
                 continue;
             }
-            String annotationTopic = consumeService.topic().getCode();
+            String annotationTopic = consumeService.topic();
             if (!annotationTopic.equals(topic)) {
                 continue;
             }
