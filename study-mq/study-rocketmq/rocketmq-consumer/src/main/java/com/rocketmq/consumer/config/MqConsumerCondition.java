@@ -1,4 +1,4 @@
-package com.rocketmq.producer.config;
+package com.rocketmq.consumer.config;
 
 import com.study.common.constant.MqConstant;
 import org.apache.commons.lang3.StringUtils;
@@ -8,16 +8,16 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * @Author: zj
- * @Date: 2021/4/28 11:12
+ * @Date: 2021/4/28 11:54
  * @Description:
  * @Version: 1.0
  */
-public class MqProducerCondition implements Condition {
+public class MqConsumerCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         // Judge whether the current environment switch is on
-        String isOnOff = conditionContext.getEnvironment().getProperty("rocketmq.producer.isOnOff");
+        String isOnOff = conditionContext.getEnvironment().getProperty("rocketmq.consumer.isOnOff");
         // Returns true if and only if the value is on
         if(!StringUtils.isEmpty(isOnOff) && isOnOff.equalsIgnoreCase(MqConstant.ON)){
             return true;

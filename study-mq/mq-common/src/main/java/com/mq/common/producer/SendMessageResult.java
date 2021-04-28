@@ -12,7 +12,7 @@ public class SendMessageResult {
      */
     private String messageId;
 
-    public SendMessageResult(String msgId) {
-        messageId = msgId;
+    public SendMessageResult(String messageId) {
+        this.messageId = messageId;
     }
 }

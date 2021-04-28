@@ -1,4 +1,4 @@
-package com.rocketmq.producer.send;
+package com.rocketmq.producer;
 
 import com.mq.common.producer.MessageProducer;
 import com.mq.common.producer.QueueMessage;

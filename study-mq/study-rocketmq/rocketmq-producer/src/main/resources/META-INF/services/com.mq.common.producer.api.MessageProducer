@@ -1,0 +1,1 @@
+rocketMQ=com.rocketmq.producer.RocketMqMessageProducer
