@@ -13,6 +13,7 @@ public enum ErrorEnum {
     JS_ERROR(1005, "analysis js fail"),
     LOGIN_ERROR(1006, "login fail"),
     MD5_ERROR(1007, "md5 fail"),
+    MQ_ERROR(1008, "mq fail"),
     ;
     private Integer code;
     private String message;

@@ -48,6 +48,7 @@
         <flyway-core.version>6.4.4</flyway-core.version>
         <pagehelper.version>5.0.0</pagehelper.version>
         <dynamic.datasource.boot.version>2.5.4</dynamic.datasource.boot.version>
+        <rocketmq-client.version>4.6.0</rocketmq-client.version>
     </properties>
 
     <dependencyManagement>
@@ -98,6 +99,11 @@
                 <groupId>org.springframework.security.oauth</groupId>
                 <artifactId>spring-security-oauth2</artifactId>
                 <version>${spring-security-oauth2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
             </dependency>
 
             <!-- mysql driver -->
@@ -184,12 +190,10 @@
 
     <repositories>
         <repository>
-            <id>ali-maven</id>
-            <name>ali-yun-maven</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
+            <id>central</id>
+            <name>Central Repository</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <layout>default</layout>
             <snapshots>
                 <enabled>false</enabled>
             </snapshots>
@@ -200,37 +204,15 @@
         <finalName>${project.artifactId}</finalName>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.18.1</version>
+                <version>3.0.0-M5</version>
                 <configuration>
                     <skip>true</skip>
                     <includes>
                         <include>**/*Tester.java</include>
                         <include>**/*Test.java</include>
                     </includes>
-                </configuration>
-            </plugin>
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-jar-plugin</artifactId>-->
-<!--                <version>3.0.2</version>-->
-<!--                <configuration>-->
-<!--                    <archive>-->
-<!--                        <manifestEntries>-->
-<!--                            &lt;!&ndash; 项目版本号 &ndash;&gt;-->
-<!--                            <Project-Version>${project.version}</Project-Version>-->
-<!--                            &lt;!&ndash; 时间戳 &ndash;&gt;-->
-<!--                            <Timestamp>${maven.build.timestamp}</Timestamp>-->
-<!--                        </manifestEntries>-->
-<!--                    </archive>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-            <!-- 统一修改版本 mvn versions:set -DnewVersion=1.1-SNAPSHOT -->
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>versions-maven-plugin</artifactId>
-                <configuration>
-                    <generateBackupPoms>false</generateBackupPoms>
                 </configuration>
             </plugin>
         </plugins>
@@ -252,6 +234,11 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

@@ -3,17 +3,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>spring-cloud-study</artifactId>
+        <artifactId>study-mq</artifactId>
         <groupId>com.github.brilliant-zhong</groupId>
         <version>1.0.0-RELEASE</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <modules>
-        <module>mq-common</module>
-        <module>study-rocketmq</module>
+        <module>rocketmq-producer</module>
+        <module>rocketmq-consumer</module>
     </modules>
     <packaging>pom</packaging>
-    <artifactId>study-mq</artifactId>
+    <artifactId>study-rocketmq</artifactId>
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -23,8 +23,13 @@
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
-                <artifactId>study-rocketmq</artifactId>
-                <version>${project.version}</version>
+                <artifactId>rocketmq-producer</artifactId>
+                <version>${spring.cloud.study.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq-client.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

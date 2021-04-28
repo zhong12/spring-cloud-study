@@ -7,6 +7,12 @@ package com.study.common.exception;
  * @Version: 1.0
  */
 public class BizException extends RuntimeException {
+
+    private static final long serialVersionUID = 1L;
+
+    /**
+     * 错误编码
+     */
     private String code;
 
     public BizException(String code, String message) {
