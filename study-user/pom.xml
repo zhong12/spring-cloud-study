@@ -81,12 +81,12 @@
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>study-common</artifactId>
-                <version>${spring.cloud.study.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>user-dal</artifactId>
-                <version>${spring.cloud.study.version}</version>
+                <version>${project.version}</version>
             </dependency>
 
             <dependency>

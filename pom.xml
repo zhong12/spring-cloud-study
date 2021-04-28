@@ -44,7 +44,6 @@
         <spring-security-oauth2.version>2.3.2.RELEASE</spring-security-oauth2.version>
         <mybatis.version>3.4.6</mybatis.version>
         <slf4j.api.version>1.7.7</slf4j.api.version>
-        <spring.cloud.study.version>1.0.0-RELEASE</spring.cloud.study.version>
         <flyway-core.version>6.4.4</flyway-core.version>
         <pagehelper.version>5.0.0</pagehelper.version>
         <dynamic.datasource.boot.version>2.5.4</dynamic.datasource.boot.version>

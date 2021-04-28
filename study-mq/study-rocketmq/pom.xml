@@ -24,7 +24,7 @@
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-producer</artifactId>
-                <version>${spring.cloud.study.version}</version>
+                <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
