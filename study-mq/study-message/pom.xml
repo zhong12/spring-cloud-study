@@ -11,7 +11,9 @@
     <modules>
         <module>message-queue-api</module>
         <module>message-producer-api</module>
-        <module>rockermq-producer-starter</module>
+        <module>message-consumer-api</module>
+        <module>rocketmq-producer-starter</module>
+        <module>rocketmq-consumer-starter</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-message</artifactId>
@@ -34,6 +36,11 @@
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>rocketmq-consumer</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>message-queue-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -44,7 +51,12 @@
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
-                <artifactId>rockermq-producer-starter</artifactId>
+                <artifactId>rocketmq-producer-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>rocketmq-consumer-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

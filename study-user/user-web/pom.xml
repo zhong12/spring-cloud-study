@@ -26,8 +26,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>rocketmq-consumer</artifactId>
-            <version>${project.version}</version>
+            <artifactId>rocketmq-consumer-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
@@ -44,6 +43,10 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>rocketmq-consumer-starter</artifactId>
         </dependency>
     </dependencies>
 

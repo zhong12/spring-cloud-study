@@ -28,5 +28,13 @@
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>mq-common</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>message-queue-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>study-bootstrap</artifactId>
+        </dependency>
     </dependencies>
 </project>

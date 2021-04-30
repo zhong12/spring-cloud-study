@@ -3,7 +3,7 @@ package com.rocketmq.producer;
 import com.message.queue.api.producer.MessageProducer;
 import com.mq.common.producer.QueueMessage;
 import com.mq.common.producer.SendMessageResult;
-import com.rocketmq.producer.config.MqProducerCondition;
+import com.rocketmq.producer.config.RocketMqProducerCondition;
 import com.study.extension.annotation.SPIImplement;
 import com.study.common.exception.ErrorEnum;
 import com.study.common.exception.MessageSendException;
@@ -25,7 +25,7 @@ import javax.annotation.Resource;
  */
 @Slf4j
 @SPIImplement
-@Conditional(MqProducerCondition.class)
+@Conditional(RocketMqProducerCondition.class)
 public class RocketMqMessageProducer implements MessageProducer {
 
     @Resource

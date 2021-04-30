@@ -9,27 +9,15 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <packaging>jar</packaging>
-    <artifactId>message-queue-api</artifactId>
+    <artifactId>message-consumer-api</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>study-common</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>study-extension</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>mq-common</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>message-consumer-api</artifactId>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -11,6 +11,7 @@
     <description>spring-cloud-study project for Spring Boot</description>
 
     <modules>
+        <module>study-bootstrap</module>
         <module>study-common</module>
         <module>study-registry</module>
         <module>study-extension</module>

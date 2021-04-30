@@ -46,8 +46,7 @@
         </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>rockermq-producer-starter</artifactId>
-            <version>${project.version}</version>
+            <artifactId>rocketmq-producer-starter</artifactId>
         </dependency>
     </dependencies>
 
