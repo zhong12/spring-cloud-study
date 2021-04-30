@@ -1,7 +1,9 @@
-package com.mq.common.producer;
+package com.message.queue.api.producer;
 
-import com.study.common.annotation.SPI;
+import com.mq.common.producer.QueueMessage;
+import com.mq.common.producer.SendMessageResult;
 import com.study.common.exception.MessageSendException;
+import com.study.extension.annotation.SPI;
 
 /**
  * @Author: zj

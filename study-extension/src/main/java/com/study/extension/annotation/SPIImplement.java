@@ -1,11 +1,11 @@
-package com.study.common.annotation;
+package com.study.extension.annotation;
 
 import java.lang.annotation.*;
 
 /**
  * @Author: zj
  * @Date: 2021/4/28 10:59
- * @Description:
+ * @Description: Marker for spi implement
  * @Version: 1.0
  */
 @Documented

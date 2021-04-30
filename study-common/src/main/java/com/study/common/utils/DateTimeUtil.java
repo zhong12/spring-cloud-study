@@ -66,4 +66,13 @@ public class DateTimeUtil {
     private static Date verification(Date date) {
         return null == date ? new Date() : date;
     }
+
+    /**
+     * long
+     * @param timestamp
+     * @return
+     */
+    public static String toSecondString(long timestamp) {
+        return simpleDateFormat.format(timestamp);
+    }
 }

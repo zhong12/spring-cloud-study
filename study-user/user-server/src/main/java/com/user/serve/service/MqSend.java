@@ -1,6 +1,7 @@
 package com.user.serve.service;
 
-import com.mq.common.producer.SendMessageResult;
+import com.message.queue.api.MessageResult;
+import com.study.common.response.ResultResponse;
 
 /**
  * @Author: zj
@@ -15,5 +16,5 @@ public interface MqSend {
      * @param name
      * @return
      */
-    SendMessageResult send(String name);
+    ResultResponse<MessageResult> send(String name);
 }

@@ -32,11 +32,6 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
         </dependency>
 
-        <!--mybatis -->
-<!--        <dependency>-->
-<!--            <groupId>org.mybatis</groupId>-->
-<!--            <artifactId>mybatis</artifactId>-->
-<!--        </dependency>-->
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>study-common</artifactId>

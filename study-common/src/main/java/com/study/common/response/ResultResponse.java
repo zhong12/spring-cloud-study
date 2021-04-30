@@ -55,4 +55,8 @@ public class ResultResponse<T> implements Serializable {
     public static ResultResponse error(ErrorEnum errorEnum) {
         return new ResultResponse(false, errorEnum.getMessage(), String.valueOf(errorEnum.getCode()), null);
     }
+
+    public static ResultResponse error(ErrorEnum errorEnum, String errorMessage) {
+        return new ResultResponse(false, errorMessage, String.valueOf(errorEnum.getCode()), null);
+    }
 }

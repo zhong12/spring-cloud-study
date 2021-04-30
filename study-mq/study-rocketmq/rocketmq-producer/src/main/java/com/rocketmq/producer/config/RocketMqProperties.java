@@ -6,8 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
+import org.apache.rocketmq.client.producer.MQProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 
@@ -45,7 +47,8 @@ public class RocketMqProperties {
     private Integer retryTimesWhenSendFailed;
 
     @Bean
-    public DefaultMQProducer getRocketMQProducer() throws MessageSendException {
+    @ConditionalOnMissingBean(MQProducer.class)
+    public MQProducer getRocketMQProducer() throws MessageSendException {
         if (StringUtils.isEmpty(this.groupName)) {
             throw new MessageSendException(ErrorEnum.MQ_ERROR, "groupName is blank", true);
         }

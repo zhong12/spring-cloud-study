@@ -111,10 +111,10 @@ public class FlywayConfig {
         log.info("DatabaseInitializer initialize completed");
     }
 
-    @Bean(name = "interfaceFluentConfiguration")
+    @Bean(name = "initFluentConfiguration")
     public FluentConfiguration init() throws Exception {
         before();
-        FluentConfiguration fluentConfiguration = Flyway.configure().baselineDescription("interface-Flyway-Migration")
+        FluentConfiguration fluentConfiguration = Flyway.configure().baselineDescription("init-Flyway-Migration")
                 .baselineOnMigrate(true).dataSource(dataSource).outOfOrder(true).table(flywayTable).locations(locations).encoding("UTF-8").cleanDisabled(false);
         Flyway flyway = fluentConfiguration.load();
         while (true) {

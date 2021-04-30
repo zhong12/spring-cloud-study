@@ -19,5 +19,9 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>study-extension</artifactId>
+        </dependency>
     </dependencies>
 </project>

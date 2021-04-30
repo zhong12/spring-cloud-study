@@ -7,7 +7,7 @@ spring:
     primary:
       jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: ${db.username:root}
-      password: ${db.password:123456}
+      password: ${db.password:root123}
       driver-class-name: com.mysql.jdbc.Driver
       hikari:
         #      connection-test-query: SELECT 1    #连接测试查询
@@ -28,7 +28,7 @@ spring:
         # 该值默认为1800000，即30分钟。
         leak-detection-threshold: 100000
     second:
-      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface1?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: ${db.username:root}
       password: ${db.password:123456}
       driver-class-name: com.mysql.jdbc.Driver
@@ -69,8 +69,14 @@ mybatis-plus:
 # eureka
 eureka:
   client:
+    register-with-eureka: true  #服务注册开关
+    fetch-registry: true #服务发现开关
     serviceUrl:
-      defaultZone: http://${eureka.ip:localhost}:${eureka.port:8761}/eureka/
+      defaultZone: ${eureka.url:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 
 # rocketmq producer
 rocketmq:

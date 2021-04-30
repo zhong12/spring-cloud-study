@@ -1,6 +1,11 @@
 package com.mq.common.producer;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
 
 /**
  * @Author: zj
@@ -9,7 +14,11 @@ import lombok.Data;
  * @Version: 1.0
  */
 @Data
-public class QueueMessage {
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class QueueMessage implements Serializable {
+    private static final long serialVersionUID = 1530085243745187350L;
     private String topic;
     private String tag;
     private String key;

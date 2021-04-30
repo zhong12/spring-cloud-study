@@ -1,13 +1,14 @@
 package com.user.serve.service;
 
-import com.mq.common.producer.QueueMessage;
-import com.mq.common.producer.SendMessageResult;
-import com.rocketmq.producer.RocketMqMessageProducer;
+import com.message.queue.api.Message;
+import com.message.queue.api.MessageManager;
+import com.message.queue.api.MessageResult;
+import com.study.common.response.ResultResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @Author: zj
@@ -22,17 +23,17 @@ public class MqSendImpl implements MqSend {
     private String topic;
     @Value("${rocketmq.producer.tag}")
     private String tag;
-    @Resource
-    private RocketMqMessageProducer producer;
+    @Autowired
+    private MessageManager messageManager;
 
     @Override
-    public SendMessageResult send(String name) {
-        QueueMessage queueMessage = new QueueMessage();
-        queueMessage.setKey(name);
-        queueMessage.setTopic(topic);
-        queueMessage.setTag(tag);
-        queueMessage.setBody(name.getBytes(StandardCharsets.UTF_8));
-        SendMessageResult sendMessageResult = producer.send(queueMessage);
-        return sendMessageResult;
+    public ResultResponse<MessageResult> send(String name) {
+        Message message = new Message();
+        message.setKey(name);
+        message.setTopic(topic);
+        message.setTag(tag);
+        message.setContent(name);
+        ResultResponse<MessageResult> response = messageManager.sendMessageToQueue(message, true);
+        return response;
     }
 }
