@@ -8,10 +8,10 @@ import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MQProducer;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: zj
@@ -20,28 +20,30 @@ import org.springframework.context.annotation.Conditional;
  * @Version: 1.0
  */
 @Slf4j
-@SpringBootConfiguration
-@Conditional(RocketMqProducerCondition.class)
+@Component
+@ConditionalOnProperty(value = "${rocketmq.producer.isOnOff}", havingValue = "true")
 public class RocketMqProducerProperties {
     /**
-     * 发送同一类消息的设置为同一个group，保证唯一,默认不需要设置，rocketmq会使用ip@pid(pid代表jvm名字)作为唯一标示
+     * Sending the same type of message is set to the same group to ensure uniqueness.
+     * It does not need to be set by default. Rocketmq will use it ip@pid (PID stands
+     * for the name of the JVM) as the unique identifier
      */
     @Value("${rocketmq.producer.groupName}")
     private String groupName;
     @Value("${rocketmq.producer.nameSrvAddr}")
     private String nameSrvAddr;
     /**
-     * 消息最大大小，默认4M
+     * message max size，default 4M
      */
     @Value("${rocketmq.producer.maxMessageSize:4096}")
     private Integer maxMessageSize;
     /**
-     * 消息发送超时时间，默认3秒
+     * message send timeout，default 3s
      */
     @Value("${rocketmq.producer.sendMsgTimeout:3}")
     private Integer sendMsgTimeout;
     /**
-     * 消息发送失败重试次数，默认2次
+     * The number of times the message failed to be sent and retry，default 2
      */
     @Value("${rocketmq.producer.retryTimesWhenSendFailed:2}")
     private Integer retryTimesWhenSendFailed;

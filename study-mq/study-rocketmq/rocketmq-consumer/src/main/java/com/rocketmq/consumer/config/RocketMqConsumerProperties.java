@@ -10,9 +10,9 @@ import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.common.consumer.ConsumeFromWhere;
 import org.apache.rocketmq.common.protocol.heartbeat.MessageModel;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: zj
@@ -21,8 +21,8 @@ import org.springframework.context.annotation.Conditional;
  * @Version: 1.0
  */
 @Slf4j
-@Conditional(RocketMqConsumerCondition.class)
-@SpringBootConfiguration
+@Component
+@ConditionalOnProperty(value = "${rocketmq.consumer.isOnOff}", havingValue = "true")
 public class RocketMqConsumerProperties {
     @Value("${rocketmq.consumer.nameSrvAddr}")
     private String nameSrvAddr;
