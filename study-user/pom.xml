@@ -94,7 +94,16 @@
                 <artifactId>user-dal</artifactId>
                 <version>${project.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>rocketmq-producer-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>rocketmq-consumer-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>dynamic-datasource-spring-boot-starter</artifactId>

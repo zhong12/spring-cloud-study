@@ -23,9 +23,9 @@ public class MessageProducerAutoConfiguration {
         return new RocketMqMessageManager();
     }
 
-    @Bean
-    @ConditionalOnBean(MessageManager.class)
-    public MessageManager messageSender() {
-        return new TransactionMessageManager();
-    }
+//    @Bean(name = "transactionMessageManager")
+//    @ConditionalOnBean(MessageManager.class)
+//    public MessageManager messageSender() {
+//        return new TransactionMessageManager();
+//    }
 }

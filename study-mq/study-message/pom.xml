@@ -21,6 +21,16 @@
         <dependencies>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-extension</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>mq-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -46,17 +56,22 @@
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
-                <artifactId>message-producer-api</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-producer-starter</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-consumer-starter</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>message-consumer-api</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>message-producer-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

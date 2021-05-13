@@ -199,6 +199,16 @@
                 <artifactId>study-extension</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-mq</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-cache</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
