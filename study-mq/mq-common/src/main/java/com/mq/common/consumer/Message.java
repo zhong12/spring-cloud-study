@@ -1,6 +1,9 @@
 package com.mq.common.consumer;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
@@ -11,6 +14,9 @@ import java.io.Serializable;
  * @Version: 1.0
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Message implements Serializable {
     private static final long serialVersionUID = 7047618733662181639L;
     private byte[] payLoad;

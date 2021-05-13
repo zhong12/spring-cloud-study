@@ -1,7 +1,7 @@
 package com.rocketmq.producer.starter;
 
-import com.message.queue.api.Message;
-import com.message.queue.api.MessageManager;
+import com.message.producer.api.Message;
+import com.message.producer.api.MessageManager;
 import com.message.queue.api.MessageResult;
 import com.message.queue.api.producer.MessageProducer;
 import com.mq.common.producer.QueueMessage;

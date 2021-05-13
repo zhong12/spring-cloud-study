@@ -1,9 +1,7 @@
 package com.rocketmq.consumer.starter;
 
 import com.message.queue.api.consumer.MessageConsumer;
-import com.rocketmq.consumer.config.RocketMqConsumerCondition;
 import com.study.extension.ExtensionLoader;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @Version: 1.0
  */
 @Configuration
-@EnableConfigurationProperties(RocketMqConsumerCondition.class)
 public class MessageConsumerAutoConfiguration {
 
     @Bean(name = "messageConsumerAnnotationBeanPostProcessor")

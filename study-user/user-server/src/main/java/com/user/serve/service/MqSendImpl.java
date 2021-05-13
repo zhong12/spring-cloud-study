@@ -1,10 +1,9 @@
 package com.user.serve.service;
 
-import com.message.queue.api.Message;
-import com.message.queue.api.MessageManager;
+import com.message.producer.api.Message;
+import com.message.producer.api.MessageManager;
 import com.message.queue.api.MessageResult;
 import com.study.common.response.ResultResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

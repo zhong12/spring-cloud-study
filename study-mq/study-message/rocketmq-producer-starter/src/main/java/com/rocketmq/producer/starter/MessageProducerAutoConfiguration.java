@@ -1,10 +1,7 @@
 package com.rocketmq.producer.starter;
 
-import com.message.queue.api.MessageManager;
-import com.rocketmq.producer.config.RocketMqProducerCondition;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import com.message.producer.api.MessageManager;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @Version: 1.0
  */
 @Configuration
-@EnableConfigurationProperties(RocketMqProducerCondition.class)
 public class MessageProducerAutoConfiguration {
     @Bean
     @ConditionalOnMissingBean(MessageManager.class)

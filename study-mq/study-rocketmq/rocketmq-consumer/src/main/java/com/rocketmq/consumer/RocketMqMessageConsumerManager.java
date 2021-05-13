@@ -1,8 +1,10 @@
 package com.rocketmq.consumer;
 
+import com.message.consumer.api.MqConsumeService;
+import com.message.consumer.api.RootMessageConsumer;
 import com.message.queue.api.consumer.MessageConsumerConfig;
-import com.message.queue.consumer.MessageConsumerConfig;
-import com.mq.common.consumer.MqConsumeService;
+import com.rocketmq.consumer.reflect.MessageListenerConcurrentlyFactory;
+import com.study.bootstrap.ApplicationContextHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
@@ -23,7 +25,7 @@ import java.util.List;
 @Slf4j
 public class RocketMqMessageConsumerManager {
 
-    private MessageConsumerConfig config;
+    private final MessageConsumerConfig config;
 
     public RocketMqMessageConsumerManager(MessageConsumerConfig config) {
         this.config = config;

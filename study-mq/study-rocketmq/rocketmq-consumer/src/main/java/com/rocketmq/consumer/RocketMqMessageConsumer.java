@@ -1,7 +1,7 @@
 package com.rocketmq.consumer;
 
-import com.message.queue.consumer.MessageConsumer;
-import com.message.queue.consumer.MessageConsumerConfig;
+import com.message.queue.api.consumer.MessageConsumer;
+import com.message.queue.api.consumer.MessageConsumerConfig;
 import com.study.common.exception.MessageSendException;
 import com.study.extension.annotation.SPIImplement;
 import lombok.extern.slf4j.Slf4j;

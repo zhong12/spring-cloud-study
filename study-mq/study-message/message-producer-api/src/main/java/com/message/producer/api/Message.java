@@ -1,4 +1,4 @@
-package com.message.queue.api;
+package com.message.producer.api;
 
 import com.study.common.utils.DateTimeUtil;
 import lombok.AllArgsConstructor;
@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * @Author: zj
- * @Date: 2021/4/29 11:44
+ * @Date: 2021/5/13 14:38
  * @Description:
  * @Version: 1.0
  */
@@ -19,7 +19,8 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Builder
 public class Message implements Serializable {
-    private static final long serialVersionUID = -2598934592942896194L;
+    private static final long serialVersionUID = 2030150648024234443L;
+
     /**
      * topic
      */
