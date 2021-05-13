@@ -1,12 +1,10 @@
 package com.rocketmq.consumer;
 
-import com.message.queue.api.consumer.MessageConsumer;
-import com.message.queue.api.consumer.MessageConsumerConfig;
-import com.rocketmq.consumer.config.RocketMqConsumerCondition;
+import com.message.queue.consumer.MessageConsumer;
+import com.message.queue.consumer.MessageConsumerConfig;
 import com.study.common.exception.MessageSendException;
 import com.study.extension.annotation.SPIImplement;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.context.annotation.Conditional;
 
 /**
  * @Author: zj
@@ -16,7 +14,6 @@ import org.springframework.context.annotation.Conditional;
  */
 @Slf4j
 @SPIImplement
-@Conditional(RocketMqConsumerCondition.class)
 public class RocketMqMessageConsumer implements MessageConsumer {
 
     @Override

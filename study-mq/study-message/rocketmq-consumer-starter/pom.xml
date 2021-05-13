@@ -25,11 +25,15 @@
         </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>message-consumer-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>study-bootstrap</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>

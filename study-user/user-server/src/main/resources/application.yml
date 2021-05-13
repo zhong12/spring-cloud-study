@@ -5,7 +5,7 @@ spring:
     name: user-server
   datasource:
     primary:
-      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      jdbc-url: jdbc:mysql://${db.url:172.31.236.94:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: ${db.username:root}
       password: ${db.password:root123}
       driver-class-name: com.mysql.jdbc.Driver
@@ -28,7 +28,7 @@ spring:
         # 该值默认为1800000，即30分钟。
         leak-detection-threshold: 100000
     second:
-      jdbc-url: jdbc:mysql://${db.url:172.31.238.19:32432}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      jdbc-url: jdbc:mysql://${db.url:172.31.236.94:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
       username: ${db.username:root}
       password: ${db.password:123456}
       driver-class-name: com.mysql.jdbc.Driver
@@ -83,7 +83,7 @@ rocketmq:
   producer:
     isOnOff: ${queue.isOnOff:on}
     groupName: ${spring.application.name}
-    nameSrvAddr: ${queue.ip:121.41.4.239}:${queue.port:9876}
+    nameSrvAddr: ${queue.ip:172.31.236.94}:${queue.port:9876}
     maxMessageSize: ${queue.maxMessageSize:4096}
     sendMsgTimeout: ${queue.sendMsgTimeout:3000}
     topic: ${queue.topic:test}

@@ -1,10 +1,8 @@
 package com.rocketmq.consumer;
 
-import com.message.consumer.api.MqConsumeService;
-import com.message.consumer.api.RootMessageConsumer;
 import com.message.queue.api.consumer.MessageConsumerConfig;
-import com.rocketmq.consumer.reflect.MessageListenerConcurrentlyFactory;
-import com.study.bootstrap.ApplicationContextHolder;
+import com.message.queue.consumer.MessageConsumerConfig;
+import com.mq.common.consumer.MqConsumeService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;

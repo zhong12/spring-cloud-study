@@ -20,7 +20,7 @@ rocketmq:
   consumer:
     isOnOff: ${queue.isOnOff:on}
     groupName: ${spring.application.name}
-    nameSrvAddr: ${queue.url:121.41.4.239}:${queue.port:9876}
+    nameSrvAddr: ${queue.url:172.31.236.94}:${queue.port:9876}
     topics: ${queue.topics:test}
     tag: ${queue.tag:*}
     consumeThreadMin: ${queue.consumeThreadMin:10}

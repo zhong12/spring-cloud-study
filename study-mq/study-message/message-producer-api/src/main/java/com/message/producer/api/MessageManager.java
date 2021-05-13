@@ -1,5 +1,7 @@
-package com.message.queue.api;
+package com.message.producer.api;
 
+import com.message.queue.api.Message;
+import com.message.queue.api.MessageResult;
 import com.study.common.response.ResultResponse;
 
 /**

@@ -1,8 +1,6 @@
 package com.message.consumer.api;
 
-import com.mq.common.consumer.ConsumeStatus;
 import com.mq.common.consumer.Message;
-
 import java.util.List;
 
 /**
