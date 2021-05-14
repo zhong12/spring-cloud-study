@@ -1,0 +1,2 @@
+adaptive=com.study.extension.finder.AdaptiveDependencyFinder
+extension=com.study.extension.finder.ExtensionDependencyFinder

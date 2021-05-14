@@ -337,8 +337,7 @@ public class ExtensionLoader<T> {
                 instance = (T) EXTENSION_INSTANCES.get(implementClass);
                 if (instance == null) {
                     try {
-                        EXTENSION_INSTANCES.putIfAbsent(implementClass,
-                                init(injectDependency((T) implementClass.newInstance())));
+                        EXTENSION_INSTANCES.putIfAbsent(implementClass, init(injectDependency((T) implementClass.newInstance())));
                     } catch (Exception e) {
                         throw new IllegalStateException("Can not create extension ", e);
                     }
@@ -467,12 +466,10 @@ public class ExtensionLoader<T> {
         try {
             T instance = get0(concreteImplClass);
             //wrap
-            List<ImplementConfig> wrapperImplements = extensionConfig.getWrapperImplements().getAllImplements(
-                    warehouseId);
+            List<ImplementConfig> wrapperImplements = extensionConfig.getWrapperImplements().getAllImplements(warehouseId);
             if (wrapperImplements != null && !wrapperImplements.isEmpty()) {
                 for (ImplementConfig implementConfig : wrapperImplements) {
-                    instance = injectDependency(
-                            (T) implementConfig.implementClass.getConstructor(type).newInstance(instance));
+                    instance = injectDependency((T) implementConfig.implementClass.getConstructor(type).newInstance(instance));
                 }
             }
             return instance;

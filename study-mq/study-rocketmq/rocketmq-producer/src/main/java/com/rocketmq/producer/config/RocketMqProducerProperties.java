@@ -9,6 +9,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.MQProducer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -55,8 +56,7 @@ public class RocketMqProducerProperties {
         if (StringUtils.isEmpty(this.nameSrvAddr)) {
             throw new MessageSendException(ErrorEnum.MQ_ERROR, "nameServerAddr is blank", true);
         }
-        DefaultMQProducer producer;
-        producer = new DefaultMQProducer(this.groupName);
+        DefaultMQProducer producer = new DefaultMQProducer(this.groupName);
         producer.setNamesrvAddr(this.nameSrvAddr);
         if (this.maxMessageSize != null) {
             producer.setMaxMessageSize(this.maxMessageSize);
