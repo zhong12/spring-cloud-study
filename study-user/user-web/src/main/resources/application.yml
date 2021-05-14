@@ -18,10 +18,9 @@ eureka:
 #rocketmq consumer
 rocketmq:
   consumer:
-    queue: ${consumer.queue:rocketMQ}
-    isOnOff: ${queue.isOnOff:on}
+    isOnOff: ${queue.isOnOff:true}
     groupName: ${spring.application.name}
-    nameSrvAddr: ${queue.url:127.0.0.1}:${queue.port:9876}
+    nameSrvAddr: ${queue.ip:127.0.0.1}:${queue.port:9876}
     topic: ${queue.topic:test}
     tag: ${queue.tag:*}
     consumeThreadMin: ${queue.consumeThreadMin:10}

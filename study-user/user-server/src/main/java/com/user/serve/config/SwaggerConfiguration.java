@@ -47,6 +47,7 @@ public class SwaggerConfiguration {
         return new ApiInfoBuilder().title("swagger和springBoot整合")
                 .description("swagger的API文档")
                 .version("1.0")
+                .termsOfServiceUrl("更多请关注http://www.baidu.com")
                 .build();
     }
 

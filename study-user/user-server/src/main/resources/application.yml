@@ -81,7 +81,7 @@ eureka:
 # rocketmq producer
 rocketmq:
   producer:
-    isOnOff: ${queue.isOnOff:on}
+    isOnOff: ${queue.isOnOff:true}
     groupName: ${spring.application.name}
     nameSrvAddr: ${queue.ip:127.0.0.1}:${queue.port:9876}
     maxMessageSize: ${queue.maxMessageSize:4096}

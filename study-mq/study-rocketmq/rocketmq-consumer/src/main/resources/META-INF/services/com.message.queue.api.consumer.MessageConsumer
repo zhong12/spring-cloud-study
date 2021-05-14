@@ -1,1 +1,1 @@
-rocketMQ=com.rocketmq.consumer.RocketMqMessageConsumer
+rocketMqQueue=com.rocketmq.consumer.RocketMqMessageConsumer

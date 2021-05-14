@@ -4,6 +4,7 @@ import com.message.producer.api.Message;
 import com.message.producer.api.MessageManager;
 import com.message.queue.api.MessageResult;
 import com.message.queue.api.producer.MessageProducer;
+import com.mq.common.constant.RocketMqConstant;
 import com.mq.common.producer.QueueMessage;
 import com.mq.common.producer.SendMessageResult;
 import com.study.common.exception.ErrorEnum;
@@ -22,6 +23,7 @@ import java.nio.charset.StandardCharsets;
  */
 @Slf4j
 public class RocketMqMessageManager implements MessageManager {
+
     @Override
     public ResultResponse<Boolean> saveMessageRecord(Message message) {
         log.info("Save message to record:{}", message.toLoggingString());
@@ -37,7 +39,7 @@ public class RocketMqMessageManager implements MessageManager {
         ResultResponse response = ResultResponse.success();
         try {
             log.info("Commit message to queue:{}", message.toLoggingString());
-            MessageProducer messageProducer = ExtensionLoader.getExtensionLoader(MessageProducer.class).getByName(message.getTopic());
+            MessageProducer messageProducer = ExtensionLoader.getExtensionLoader(MessageProducer.class).getByName(RocketMqConstant.rocketMqQueue);
             if (isSynchronization) {
                 SendMessageResult sendMessageResult = messageProducer.send(queueMessage);
                 response.setData(sendMessageResult);
