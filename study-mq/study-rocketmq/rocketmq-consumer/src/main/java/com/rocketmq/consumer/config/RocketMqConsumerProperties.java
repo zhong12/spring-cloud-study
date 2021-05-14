@@ -1,7 +1,5 @@
 package com.rocketmq.consumer.config;
 
-//import com.rocketmq.consumer.MqConsumeMsgListenerProcessor;
-
 import com.study.common.exception.ErrorEnum;
 import com.study.common.exception.MessageSendException;
 import lombok.extern.slf4j.Slf4j;

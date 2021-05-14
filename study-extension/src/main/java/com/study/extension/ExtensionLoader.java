@@ -325,8 +325,7 @@ public class ExtensionLoader<T> {
 
     public T getAdaptiveExtension() {
         String warehouseId = "1";
-        Class<?> adaptiveImplement = extensionConfig.getAdaptiveImplements().getSoloImplement(warehouseId)
-                .getImplementClass();
+        Class<?> adaptiveImplement = extensionConfig.getAdaptiveImplements().getSoloImplement(warehouseId).getImplementClass();
         return get0(adaptiveImplement);
     }
 

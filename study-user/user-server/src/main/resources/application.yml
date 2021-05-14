@@ -5,9 +5,9 @@ spring:
     name: user-server
   datasource:
     primary:
-      jdbc-url: jdbc:mysql://${db.url:172.31.236.94:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: ${db.username:root}
-      password: ${db.password:root123}
+      jdbc-url: jdbc:mysql://${db1.url:127.0.0.1:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: ${db1.username:root}
+      password: ${db1.password:123456}
       driver-class-name: com.mysql.jdbc.Driver
       hikari:
         #      connection-test-query: SELECT 1    #连接测试查询
@@ -28,9 +28,9 @@ spring:
         # 该值默认为1800000，即30分钟。
         leak-detection-threshold: 100000
     second:
-      jdbc-url: jdbc:mysql://${db.url:172.31.236.94:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-      username: ${db.username:root}
-      password: ${db.password:123456}
+      jdbc-url: jdbc:mysql://${db2.url:127.0.0.1:3306}/evo_interface?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: ${db2.username:root}
+      password: ${db2.password:123456}
       driver-class-name: com.mysql.jdbc.Driver
       hikari:
         idle-timeout: 80000
@@ -50,7 +50,7 @@ spring:
         'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
       - CREATE SCHEMA IF NOT EXISTS `{schema}` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
     table: flyway_schema_history
-    enabled: false
+    enabled: true
 
 #mybatis
 mybatis-plus:
@@ -83,7 +83,7 @@ rocketmq:
   producer:
     isOnOff: ${queue.isOnOff:on}
     groupName: ${spring.application.name}
-    nameSrvAddr: ${queue.ip:172.31.236.94}:${queue.port:9876}
+    nameSrvAddr: ${queue.ip:127.0.0.1}:${queue.port:9876}
     maxMessageSize: ${queue.maxMessageSize:4096}
     sendMsgTimeout: ${queue.sendMsgTimeout:3000}
     topic: ${queue.topic:test}

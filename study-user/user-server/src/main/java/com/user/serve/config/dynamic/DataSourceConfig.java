@@ -69,6 +69,7 @@ public class DataSourceConfig {
      * @return
      */
     @Bean("dynamicDataSource")
+    @DependsOn("initFluentConfiguration")
     public DataSource dynamicDataSource(@Qualifier("primaryDataSource") DataSource primaryDataSource,
                                         @Qualifier("secondDataSource") DataSource secondDataSource) {
         DynamicRoutingDataSource dynamicRoutingDataSource = new DynamicRoutingDataSource();
