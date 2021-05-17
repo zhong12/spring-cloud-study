@@ -48,6 +48,10 @@
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>rocketmq-producer-starter</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
