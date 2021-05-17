@@ -50,7 +50,7 @@
         <flyway-core.version>6.4.4</flyway-core.version>
         <pagehelper.version>5.0.0</pagehelper.version>
         <dynamic.datasource.boot.version>2.5.4</dynamic.datasource.boot.version>
-        <rocketmq-client.version>4.6.0</rocketmq-client.version>
+        <rocketmq-client.version>4.3.0</rocketmq-client.version>
     </properties>
 
     <dependencyManagement>
