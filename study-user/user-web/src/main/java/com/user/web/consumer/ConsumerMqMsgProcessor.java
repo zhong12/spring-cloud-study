@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.DependsOn;
+import org.springframework.stereotype.Component;
 
 /**
  * @Author: zj
@@ -16,7 +17,9 @@ import org.springframework.context.annotation.DependsOn;
  * @Version: 1.0
  */
 @Slf4j
-@MqConsumeService(consumerGroup = "${rocketmq.consumer.groupName}", topic = "${rocketmq.consumer.topic}", tags = "${rocketmq.consumer.tag}")
+@Component
+//@ConditionalOnProperty(prefix = "rocketmq.consumer", value = "isOnOff", havingValue = "true")
+@MqConsumeService(consumerGroup = "${rocketmq.consumer.groupName}", topic = "${rocketmq.consumer.topic}", subExpression = "${rocketmq.consumer.tag:*}")
 public class ConsumerMqMsgProcessor extends AbstractMessageConsumer {
 
     @Value("${rocketmq.consumer.consumeMessageBatchMaxSize}")

@@ -36,5 +36,5 @@ public @interface MqConsumeService {
      *
      * @return
      */
-    String tags() default "*";
+    String subExpression() default "*";
 }

@@ -77,7 +77,7 @@ public class MessageConsumerAnnotationBeanPostProcessor implements BeanPostProce
 
             MessageConsumerConfig messageConsumerConfig = new MessageConsumerConfig(
                     resolvePlaceHolder(consumerGroup), resolvePlaceHolder(topic),
-                    resolvePlaceHolder(messageConsumerAnnotation.tags()), bean, messageConsumerInterface);
+                    resolvePlaceHolder(messageConsumerAnnotation.subExpression()), bean, messageConsumerInterface);
             messageConsumerConfigs.add(messageConsumerConfig);
         }
         return bean;
