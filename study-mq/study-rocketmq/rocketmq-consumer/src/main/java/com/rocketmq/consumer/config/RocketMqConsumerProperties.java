@@ -49,6 +49,7 @@ public class RocketMqConsumerProperties {
         consumer.setMessageModel(MessageModel.CLUSTERING);
         // Set the number of messages consumed once, 1 by default
         consumer.setConsumeMessageBatchMaxSize(consumeMessageBatchMaxSize);
+        consumer.setVipChannelEnabled(true);
         return consumer;
     }
 }

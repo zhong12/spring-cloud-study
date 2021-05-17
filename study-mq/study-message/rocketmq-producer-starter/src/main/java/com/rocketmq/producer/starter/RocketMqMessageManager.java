@@ -38,8 +38,7 @@ public class RocketMqMessageManager implements MessageManager {
         ResultResponse response = ResultResponse.success();
         try {
             log.info("Commit message to queue:{}", message.toLoggingString());
-            MessageProducer messageProducer = ExtensionLoader.getExtensionLoader(MessageProducer.class)
-                    .getByName(RocketMqConstant.rocketMqQueue);
+            MessageProducer messageProducer = ExtensionLoader.getExtensionLoader(MessageProducer.class).getByName(RocketMqConstant.rocketMqQueue);
             if (isSynchronization) {
                 SendMessageResult sendMessageResult = messageProducer.send(queueMessage);
                 response.setData(sendMessageResult);

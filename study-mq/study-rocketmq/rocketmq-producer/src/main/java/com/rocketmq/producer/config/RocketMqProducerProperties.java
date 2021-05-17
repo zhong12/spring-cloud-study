@@ -64,6 +64,7 @@ public class RocketMqProducerProperties {
         if (this.sendMsgTimeout != null) {
             producer.setSendMsgTimeout(this.sendMsgTimeout);
         }
+        producer.setVipChannelEnabled(true);
         // If the message fails to be sent, set the number of retries, which is 2 by default
         if (this.retryTimesWhenSendFailed != null) {
             producer.setRetryTimesWhenSendFailed(this.retryTimesWhenSendFailed);

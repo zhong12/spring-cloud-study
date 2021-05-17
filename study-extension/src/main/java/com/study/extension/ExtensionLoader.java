@@ -77,22 +77,20 @@ public class ExtensionLoader<T> {
 
     @SuppressWarnings("unchecked")
     public static <T> ExtensionLoader<T> getExtensionLoader(Class<T> type) {
-        if (type == null) {
+        if (Objects.isNull(type)) {
             throw new IllegalArgumentException("Type == null");
         }
         if (!type.isInterface()) {
             throw new IllegalArgumentException("Type(" + type + ") is not interface!");
         }
         if (!type.isAnnotationPresent(SPI.class)) {
-            throw new IllegalArgumentException(
-                    "Type(" + type + ") is not extension interface, because WITHOUT @" + SPI.class.getSimpleName()
-                            + " Annotation!");
+            throw new IllegalArgumentException("Type(" + type + ") is not extension interface, because WITHOUT @" + SPI.class.getSimpleName() + " Annotation!");
         }
         ExtensionLoader<?> loader = EXTENSION_LOADERS.get(type);
-        if (loader == null) {
+        if (Objects.isNull(loader)) {
             synchronized (Lock.getLock(type.getName())) {
                 loader = EXTENSION_LOADERS.get(type);
-                if (loader == null) {
+                if (Objects.isNull(loader)) {
                     EXTENSION_LOADERS.putIfAbsent(type, new ExtensionLoader<>(type));
                     loader = EXTENSION_LOADERS.get(type);
                 }
@@ -104,7 +102,6 @@ public class ExtensionLoader<T> {
     private void loadExtensionConfig() {
         ExtensionConfig extensionConfig = new ExtensionConfig();
         loadDirectory(extensionConfig, SERVICES_DIRECTORY);
-
         this.extensionConfig = extensionConfig;
     }
 
@@ -120,8 +117,7 @@ public class ExtensionLoader<T> {
                 }
             }
         } catch (Throwable t) {
-            log.error("Exception when load extension class(interface: " + type
-                    + ",description file: " + fileName + ")", t);
+            log.error("Exception when load extension class(interface: " + type + ",description file: " + fileName + ")", t);
         }
     }
 
@@ -165,8 +161,7 @@ public class ExtensionLoader<T> {
         }
     }
 
-    private ImplementConfig createImplementConfig(String implClassFullyQualifiedName,
-                                                  ClassLoader classLoader, String name) {
+    private ImplementConfig createImplementConfig(String implClassFullyQualifiedName, ClassLoader classLoader, String name) {
         Class<?> implementClass;
         try {
             implementClass = Class.forName(implClassFullyQualifiedName, true, classLoader);
@@ -174,17 +169,12 @@ public class ExtensionLoader<T> {
             throw new RuntimeException(e);
         }
         if (!type.isAssignableFrom(implementClass)) {
-            throw new IllegalStateException(
-                    "Class " + implementClass.getName() + "is not subtype of interface");
+            throw new IllegalStateException("Class " + implementClass.getName() + "is not subtype of interface");
         }
-
         SPIImplement spiImplAnnotation = implementClass.getAnnotation(SPIImplement.class);
         if (spiImplAnnotation == null) {
-            throw new IllegalArgumentException(
-                    "Implement(" + implementClass + ") is not extension, because WITHOUT @" + SPIImplement.class
-                            .getSimpleName() + " Annotation!");
+            throw new IllegalArgumentException("Implement(" + implementClass + ") is not extension, because WITHOUT @" + SPIImplement.class.getSimpleName() + " Annotation!");
         }
-
         ImplementType implementType;
         if (implementClass.isAnnotationPresent(Adaptive.class)) {
             implementType = ImplementType.ADAPTIVE;
@@ -193,7 +183,6 @@ public class ExtensionLoader<T> {
         } else {
             implementType = ImplementType.CONCRETE;
         }
-
         if (StringUtils.isBlank(name)) {
             // get name from annotation
             name = spiImplAnnotation.name();
@@ -203,9 +192,7 @@ public class ExtensionLoader<T> {
             String classShortName = ReflectionUtils.getShortName(implementClass.getName());
             name = Introspector.decapitalize(classShortName);
         }
-
-        return new ImplementConfig(implementType, implementClass, spiImplAnnotation, name,
-                spiImplAnnotation.warehouseIds(), spiImplAnnotation.order());
+        return new ImplementConfig(implementType, implementClass, spiImplAnnotation, name, spiImplAnnotation.warehouseIds(), spiImplAnnotation.order());
     }
 
     private boolean isWrapperClass(Class<?> clazz) {
@@ -227,8 +214,7 @@ public class ExtensionLoader<T> {
         private final ImplementConfigSet adaptiveImplements = new ImplementConfigSet();
 
         ImplementConfig indexConcreteImplement(String name, Class<?> implClass) {
-            return concreteImplements.get(name).configs.stream().filter(
-                    e -> e.getImplementClass().equals(implClass)).findFirst().orElseThrow(() -> new RuntimeException(""));
+            return concreteImplements.get(name).configs.stream().filter(e -> e.getImplementClass().equals(implClass)).findFirst().orElseThrow(() -> new RuntimeException(""));
         }
 
         private void addImplementConfig(ImplementConfig implementConfig) {
@@ -236,8 +222,7 @@ public class ExtensionLoader<T> {
             if (implementType == ImplementType.ADAPTIVE) {
                 adaptiveImplements.add(implementConfig);
             } else if (implementType == ImplementType.CONCRETE) {
-                concreteImplements.computeIfAbsent(implementConfig.getName(),
-                        k -> new ImplementConfigSet()).add(implementConfig);
+                concreteImplements.computeIfAbsent(implementConfig.getName(), k -> new ImplementConfigSet()).add(implementConfig);
             } else if (implementType == ImplementType.WRAPPER) {
                 wrapperImplements.add(implementConfig);
             } else {
@@ -256,8 +241,7 @@ public class ExtensionLoader<T> {
         private final String warehouseIds;
         private final int order;
 
-        ImplementConfig(ImplementType implementType, Class<?> implementClass,
-                        SPIImplement spiImplAnnotation, String name, String warehouseIds, int order) {
+        ImplementConfig(ImplementType implementType, Class<?> implementClass, SPIImplement spiImplAnnotation, String name, String warehouseIds, int order) {
             this.implementType = implementType;
             this.implementClass = implementClass;
             this.spiImplAnnotation = spiImplAnnotation;
@@ -305,26 +289,23 @@ public class ExtensionLoader<T> {
         ImplementConfig getSoloImplement(String warehouseId) {
             List<ImplementConfig> allImplements = getAllImplements(warehouseId);
             List<ImplementConfig> warehouseSpecifiedImplements = allImplements.stream().filter(
-                    e -> !e.getWarehouseIds().equalsIgnoreCase(SPIImplement.PRODUCT_APPLY_ALL)).collect(
-                    Collectors.toList());
-
+                    e -> !e.getWarehouseIds().equalsIgnoreCase(SPIImplement.PRODUCT_APPLY_ALL)).collect(Collectors.toList());
             // warehouse level customization should override product extension if exists
             if (!warehouseSpecifiedImplements.isEmpty()) {
                 if (warehouseSpecifiedImplements.size() == 1) {
                     return warehouseSpecifiedImplements.get(0);
                 }
-                throw new IllegalStateException("Wrong state,warehouseId=[" + warehouseId + "],type=[" + type + "]");
             } else {
                 if (allImplements.size() == 1) {
                     return allImplements.get(0);
                 }
-                throw new IllegalStateException("Wrong state,warehouseId=[" + warehouseId + "],type=[" + type + "]");
             }
+            throw new IllegalStateException("Wrong state,warehouseId=[" + warehouseId + "],type=[" + type + "]");
         }
     }
 
     public T getAdaptiveExtension() {
-        String warehouseId = "1";
+        String warehouseId = "999-NOT-EXISTS";
         Class<?> adaptiveImplement = extensionConfig.getAdaptiveImplements().getSoloImplement(warehouseId).getImplementClass();
         return get0(adaptiveImplement);
     }
@@ -332,10 +313,10 @@ public class ExtensionLoader<T> {
     @SuppressWarnings("unchecked")
     private T get0(Class<?> implementClass) {
         T instance = (T) EXTENSION_INSTANCES.get(implementClass);
-        if (instance == null) {
+        if (Objects.isNull(instance)) {
             synchronized (this) {
                 instance = (T) EXTENSION_INSTANCES.get(implementClass);
-                if (instance == null) {
+                if (Objects.isNull(instance)) {
                     try {
                         EXTENSION_INSTANCES.putIfAbsent(implementClass, init(injectDependency((T) implementClass.newInstance())));
                     } catch (Exception e) {
@@ -353,8 +334,7 @@ public class ExtensionLoader<T> {
             try {
                 // process methods declared injection
                 for (Method method : instance.getClass().getMethods()) {
-                    if (method.getName().startsWith("set") && method.getParameterTypes().length == 1 && Modifier
-                            .isPublic(method.getModifiers())) {
+                    if (method.getName().startsWith("set") && method.getParameterTypes().length == 1 && Modifier.isPublic(method.getModifiers())) {
                         InjectMethod injectAnnotation = method.getAnnotation(InjectMethod.class);
                         if (injectAnnotation == null) {
                             continue;
@@ -362,19 +342,16 @@ public class ExtensionLoader<T> {
                         // inject
                         String dependencyName = injectAnnotation.value();
                         if (dependencyName.trim().length() == 0) {
-                            dependencyName = method.getName().length() > 3 ? method.getName().substring(3, 4)
-                                    .toLowerCase() + method.getName().substring(4) : "";
+                            dependencyName = method.getName().length() > 3 ? method.getName().substring(3, 4).toLowerCase() + method.getName().substring(4) : "";
                         }
                         Class<?> dependencyType = method.getParameterTypes()[0];
                         try {
-                            Object dependency = ExtensionLoader.getExtensionLoader(DependencyFinder.class)
-                                    .getAdaptiveExtension().find(dependencyType, dependencyName);
+                            Object dependency = ExtensionLoader.getExtensionLoader(DependencyFinder.class).getAdaptiveExtension().find(dependencyType, dependencyName);
                             if (dependency != null) {
                                 method.invoke(instance, dependency);
                             }
                         } catch (Exception e) {
-                            log.error("fail to inject via method " + method.getName()
-                                    + "|interface " + this.type.getName() + "|" + e.getMessage(), e);
+                            log.error("fail to inject via method " + method.getName() + "|interface " + this.type.getName() + "|" + e.getMessage(), e);
                         }
                     }
                 }
@@ -386,20 +363,18 @@ public class ExtensionLoader<T> {
                 for (Field resourceField : resourceFields) {
                     Resource resourceAnnotation = resourceField.getAnnotation(Resource.class);
                     String dependencyName = resourceAnnotation.name();
-                    if (dependencyName.trim().length() == 0) {
+                    if (StringUtils.isEmpty(dependencyName)) {
                         dependencyName = resourceField.getName();
                     }
                     Class<?> dependencyType = resourceField.getType();
                     try {
-                        Object dependency = ExtensionLoader.getExtensionLoader(DependencyFinder.class)
-                                .getAdaptiveExtension().find(dependencyType, dependencyName);
-                        if (dependency != null) {
+                        Object dependency = ExtensionLoader.getExtensionLoader(DependencyFinder.class).getAdaptiveExtension().find(dependencyType, dependencyName);
+                        if (Objects.nonNull(dependency)) {
                             resourceField.setAccessible(true);
                             resourceField.set(instance, dependency);
                         }
                     } catch (Exception e) {
-                        log.error("fail to inject via field " + resourceField.getName()
-                                + "|interface " + this.type.getName() + "|" + e.getMessage(), e);
+                        log.error("fail to inject via field " + resourceField.getName() + "|interface " + this.type.getName() + "|" + e.getMessage(), e);
                     }
                 }
             } catch (Exception e) {
@@ -428,32 +403,28 @@ public class ExtensionLoader<T> {
     }
 
     public Set<String> getNames() {
-        String warehouseId = "1";
+        String warehouseId = "999-NOT-EXISTS";
         return extensionConfig.getConcreteImplements().entrySet().stream().filter(
                 e -> e.getValue().accept(warehouseId)).map(Map.Entry::getKey).collect(Collectors.toSet());
     }
 
     @SuppressWarnings("unchecked")
     public T getByName(String name) {
-        if (name == null || name.trim().length() == 0) {
+        if (StringUtils.isEmpty(name)) {
             throw new IllegalArgumentException("Extension name is empty");
         }
-        String warehouseId = "1";
-        Class<?> concreteImplement = extensionConfig.getConcreteImplements().get(name).getSoloImplement(warehouseId)
-                .getImplementClass();
-        if (concreteImplement == null) {
-            throw new IllegalStateException(
-                    "Extension not found,warehouseId=[" + warehouseId + "],type=[" + type + "]");
+        String warehouseId = "999-NOT-EXISTS";
+        Class<?> concreteImplement = extensionConfig.getConcreteImplements().get(name).getSoloImplement(warehouseId).getImplementClass();
+        if (Objects.isNull(concreteImplement)) {
+            throw new IllegalStateException("Extension not found,warehouseId=[" + warehouseId + "],type=[" + type + "]");
         }
-
         String concreteExtensionInstanceCacheKey = warehouseId + "|" + concreteImplement.getCanonicalName();
         T instance = concreteExtensionInstances.get(concreteExtensionInstanceCacheKey);
-        if (instance == null) {
+        if (Objects.isNull(instance)) {
             synchronized (this) {
                 instance = concreteExtensionInstances.get(concreteExtensionInstanceCacheKey);
-                if (instance == null) {
-                    concreteExtensionInstances.putIfAbsent(concreteExtensionInstanceCacheKey,
-                            createConcreteExtension(warehouseId, concreteImplement));
+                if (Objects.isNull(instance)) {
+                    concreteExtensionInstances.putIfAbsent(concreteExtensionInstanceCacheKey, createConcreteExtension(warehouseId, concreteImplement));
                     instance = concreteExtensionInstances.get(concreteExtensionInstanceCacheKey);
                 }
             }

@@ -34,6 +34,11 @@
                 <artifactId>mq-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>study-bootstrap</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 <!--            <dependency>-->
 <!--                <groupId>com.github.brilliant-zhong</groupId>-->
 <!--                <artifactId>study-rocketmq</artifactId>-->
