@@ -61,8 +61,8 @@ public class MessageConsumerAnnotationBeanPostProcessor implements BeanPostProce
                 throw new RuntimeException("Consumer group config error, bean=" + targetClass.getName());
             }
             // topic
-            String topic = messageConsumerAnnotation.topic();
-            if (StringUtils.isBlank(topic) || StringUtils.equalsIgnoreCase(topic, MqConsumeService.NOT_EXIST)) {
+            String topics = messageConsumerAnnotation.topic();
+            if (StringUtils.isBlank(topics) || StringUtils.equalsIgnoreCase(topics, MqConsumeService.NOT_EXIST)) {
                 throw new RuntimeException("Topic config error, bean=" + targetClass.getName());
             }
             // find consumer interface
@@ -76,8 +76,7 @@ public class MessageConsumerAnnotationBeanPostProcessor implements BeanPostProce
                     = (Class<? extends RootMessageConsumer>) messageConsumerInterfaceList.get(0);
 
             MessageConsumerConfig messageConsumerConfig = new MessageConsumerConfig(
-                    resolvePlaceHolder(consumerGroup), resolvePlaceHolder(topic),
-                    resolvePlaceHolder(messageConsumerAnnotation.subExpression()), bean, messageConsumerInterface);
+                    resolvePlaceHolder(consumerGroup), resolvePlaceHolder(topics), bean, messageConsumerInterface);
             messageConsumerConfigs.add(messageConsumerConfig);
         }
         return bean;

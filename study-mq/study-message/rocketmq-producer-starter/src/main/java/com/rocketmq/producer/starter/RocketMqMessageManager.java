@@ -52,6 +52,7 @@ public class RocketMqMessageManager implements MessageManager {
             log.error("Commit msg error >> {} - {}", message.toLoggingString(), e);
             response = ResultResponse.error(e.getMessage());
         }
+        log.info("Commit message response:{}", response);
         return response;
     }
 }

@@ -32,17 +32,26 @@ public class RocketMqMessageConsumerManager {
     }
 
     public void start() {
-        log.info("Start RocketMQ consumer,consumerGroup={},topic={},subExpression={}", config.getConsumerGroup(), config.getTopic(), config.getSubExpression());
+        log.info("Start RocketMQ consumer,consumerGroup={},topic={}", config.getConsumerGroup(), config.getTopics());
         DefaultMQPushConsumer consumer = ApplicationContextHolder.getSingleton(DefaultMQPushConsumer.class);
         if (StringUtils.isNotBlank(config.getConsumerGroup()) && !StringUtils.equalsIgnoreCase(config.getConsumerGroup(), MqConsumeService.NOT_EXIST)) {
             consumer.setConsumerGroup(config.getConsumerGroup());
         }
-
         //  register message listener, now we only support normal message
         MessageListenerConcurrently messageListener = new DefaultMessageListener();
         consumer.registerMessageListener(messageListener);
         // start
         try {
+            /**
+             *
+             * Set the topic and tag that the consumer subscribes to. If the consumer subscribes to all the tags under the topic, the tag uses *;
+             * If you need to specify a subscription to some tags under this topic, use | segmentation, such as tag1 | tag2 | tag3
+             */
+            String[] topicTagsArr = config.getTopics().split(";");
+            for (String topicTags : topicTagsArr) {
+                String[] topicTag = topicTags.split("~");
+                consumer.subscribe(topicTag[0], topicTag[1]);
+            }
             consumer.start();
         } catch (MQClientException e) {
             log.error("RocketMQ Consumer startup failed. Caused by " + e.getErrorMessage(), e);

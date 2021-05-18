@@ -13,6 +13,9 @@ import com.study.extension.annotation.SPI;
 public interface MessageConsumer {
     /**
      * start message consumer
+     *
+     * @param config
+     * @throws MessageSendException
      */
     void startMessageConsumer(MessageConsumerConfig config) throws MessageSendException;
 }

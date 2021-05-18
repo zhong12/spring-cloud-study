@@ -14,24 +14,21 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 @Data
 public class MessageConsumerConfig {
     private final String consumerGroup;
-    private final String topic;
-    private final String subExpression;
-
+    private final String topics;
     private final Object bean;
     private Class<? extends RootMessageConsumer> messageConsumerInterface;
 
-    public MessageConsumerConfig(String consumerGroup, String topic, String subExpression, Object bean,
+    public MessageConsumerConfig(String consumerGroup, String topics, Object bean,
                                  Class<? extends RootMessageConsumer> messageConsumerInterface) {
         this.consumerGroup = consumerGroup;
-        this.topic = topic;
-        this.subExpression = subExpression;
+        this.topics = topics;
         this.bean = bean;
         this.messageConsumerInterface = messageConsumerInterface;
     }
 
     @Override
     public String toString() {
-        return String.format("{%s|%s|%s|%s|%s}", consumerGroup, topic, subExpression, bean.getClass().getName(),
+        return String.format("{%s|%s|%s|%s}", consumerGroup, topics, bean.getClass().getName(),
                 messageConsumerInterface.getName());
     }
 
@@ -43,8 +40,7 @@ public class MessageConsumerConfig {
         return new EqualsBuilder()
                 .appendSuper(super.equals(o))
                 .append(consumerGroup, that.consumerGroup)
-                .append(topic, that.topic)
-                .append(subExpression, that.subExpression)
+                .append(topics, that.topics)
                 .append(bean, that.bean)
                 .append(messageConsumerInterface, that.messageConsumerInterface)
                 .isEquals();
@@ -55,8 +51,7 @@ public class MessageConsumerConfig {
         return new HashCodeBuilder(17, 37)
                 .appendSuper(super.hashCode())
                 .append(consumerGroup)
-                .append(topic)
-                .append(subExpression)
+                .append(topics)
                 .append(bean)
                 .append(messageConsumerInterface)
                 .toHashCode();

@@ -21,8 +21,7 @@ rocketmq:
     isOnOff: ${queue.isOnOff:true}
     groupName: ${spring.application.name}
     nameSrvAddr: ${queue.ip:127.0.0.1}:${queue.port:9876}
-    topic: ${queue.topic:test}
-    tag: ${queue.tag:*}
+    topics: ${queue.topic:test~*}
     consumeThreadMin: ${queue.consumeThreadMin:10}
     consumeThreadMax: ${queue.consumeThreadMax:64}
     consumeMessageBatchMaxSize: ${queue.consumeMessageBatchMaxSize:1}

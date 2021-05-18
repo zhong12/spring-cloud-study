@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 //@ConditionalOnProperty(prefix = "rocketmq.consumer", value = "isOnOff", havingValue = "true")
-@MqConsumeService(consumerGroup = "${rocketmq.consumer.groupName}", topic = "${rocketmq.consumer.topic}", subExpression = "${rocketmq.consumer.tag:*}")
+@MqConsumeService(consumerGroup = "${rocketmq.consumer.groupName}", topic = "${rocketmq.consumer.topics}")
 public class ConsumerMqMsgProcessor extends AbstractMessageConsumer {
 
     @Value("${rocketmq.consumer.consumeMessageBatchMaxSize}")
