@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.client.producer.MQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
+import org.apache.rocketmq.client.producer.TransactionMQProducer;
+import org.apache.rocketmq.client.producer.TransactionSendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.exception.RemotingException;
 
@@ -25,8 +27,10 @@ import javax.annotation.Resource;
 @SPIImplement
 public class RocketMqMessageProducer implements MessageProducer {
 
-    @Resource
+    @Resource(name = "getRocketMQProducer")
     private MQProducer mqProducer;
+    @Resource(name = "getTransactionMQProducer")
+    private TransactionMQProducer transactionMQProducer;
 
     @Override
     public SendMessageResult send(QueueMessage queueMessage) throws MessageSendException {
@@ -49,5 +53,17 @@ public class RocketMqMessageProducer implements MessageProducer {
         } catch (MQClientException | RemotingException | InterruptedException e) {
             log.error("sendOneway send message fail:{}", e.getMessage());
         }
+    }
+
+    @Override
+    public SendMessageResult sendTransactionMessage(QueueMessage queueMessage) {
+        Message message = new Message(queueMessage.getTopic(), queueMessage.getTag(), queueMessage.getKey(), queueMessage.getBody());
+        TransactionSendResult sendResult;
+        try {
+            sendResult = transactionMQProducer.sendMessageInTransaction(message, null);
+        } catch (Exception e) {
+            throw new MessageSendException(ErrorEnum.MQ_ERROR, e);
+        }
+        return new SendMessageResult(sendResult.getMsgId());
     }
 }

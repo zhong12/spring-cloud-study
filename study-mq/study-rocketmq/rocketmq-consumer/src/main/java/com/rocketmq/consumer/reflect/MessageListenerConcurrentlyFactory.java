@@ -72,6 +72,7 @@ public class MessageListenerConcurrentlyFactory {
             message.setStoreTimestamp(messageExt.getStoreTimestamp());
             message.setReconsumeTimes(messageExt.getReconsumeTimes());
             message.setRecvTimestamp(System.currentTimeMillis());
+            message.setPayLoad(messageExt.getBody());
             messageList.add(message);
         });
 

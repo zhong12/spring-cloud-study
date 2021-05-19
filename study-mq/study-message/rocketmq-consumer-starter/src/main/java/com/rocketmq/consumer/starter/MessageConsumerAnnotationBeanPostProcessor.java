@@ -15,10 +15,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.env.Environment;
 import org.springframework.util.ClassUtils;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -54,7 +51,7 @@ public class MessageConsumerAnnotationBeanPostProcessor implements BeanPostProce
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         Class<?> targetClass = AopUtils.isAopProxy(bean) ? AopUtils.getTargetClass(bean) : bean.getClass();
         MqConsumeService messageConsumerAnnotation = targetClass.getAnnotation(MqConsumeService.class);
-        if (messageConsumerAnnotation != null) {
+        if (Objects.nonNull(messageConsumerAnnotation)) {
             //  consumerGroup
             String consumerGroup = messageConsumerAnnotation.consumerGroup();
             if (StringUtils.isBlank(consumerGroup) || StringUtils.equalsIgnoreCase(consumerGroup, MqConsumeService.NOT_EXIST)) {

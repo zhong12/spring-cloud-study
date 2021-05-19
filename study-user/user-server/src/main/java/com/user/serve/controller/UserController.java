@@ -32,24 +32,31 @@ public class UserController {
     @Resource
     private MqSend mqSend;
 
-    @ApiOperation(value="查询配置信息")
+    @ApiOperation(value = "查询配置信息")
     @GetMapping("")
     public ResultResponse<List> get() {
         List<Config> configList = configDas.list();
         return ResultResponse.success(configList);
     }
 
-    @ApiOperation(value="通过id查询配置信息")
+    @ApiOperation(value = "通过id查询配置信息")
     @GetMapping("/{id}")
     public ResultResponse<Config> getId(@PathVariable("id") Long id) {
         Config config = configDas.getById(id);
         return ResultResponse.success(config);
     }
 
-    @ApiOperation(value="通过name发送mq消息")
-    @GetMapping("/send/{name}")
-    public ResultResponse<MessageResult> sendMq(@PathVariable("name") String name) {
-        ResultResponse<MessageResult> response = mqSend.send(name);
+    @ApiOperation(value = "通过name发送mq消息")
+    @GetMapping("/send/{name}/{key}")
+    public ResultResponse<MessageResult> sendMq(@PathVariable("name") String name, @PathVariable("key") String key) {
+        ResultResponse<MessageResult> response = mqSend.send(name, key, false);
+        return response;
+    }
+
+    @ApiOperation(value = "通过name发送mq消息")
+    @GetMapping("/sendTransaction/{name}/{key}")
+    public ResultResponse<MessageResult> sendTransaction(@PathVariable("name") String name, @PathVariable("key") String key) {
+        ResultResponse<MessageResult> response = mqSend.send(name, key, true);
         return response;
     }
 

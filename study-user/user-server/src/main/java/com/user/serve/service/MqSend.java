@@ -14,7 +14,9 @@ public interface MqSend {
      * send
      *
      * @param name
+     * @param key
+     * @param isTransaction
      * @return
      */
-    ResultResponse<MessageResult> send(String name);
+    ResultResponse<MessageResult> send(String name, String key, boolean isTransaction);
 }

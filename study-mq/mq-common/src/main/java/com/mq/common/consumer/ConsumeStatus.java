@@ -1,9 +1,5 @@
 package com.mq.common.consumer;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-
 /**
  * @Author: zj
  * @Date: 2021/4/30 14:29

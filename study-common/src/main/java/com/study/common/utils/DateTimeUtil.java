@@ -12,9 +12,9 @@ import java.util.Date;
  * @Describe:
  */
 public class DateTimeUtil {
-    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
-    private static final String DATE_FORMAT = "yyyy-MM-dd";
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
+    public static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+    public static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat();
 
     /**
      * 时间转String，并格式化

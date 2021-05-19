@@ -46,13 +46,35 @@ public class RocketMqMessageManager implements MessageManager {
                 messageProducer.sendOneway(queueMessage);
             }
         } catch (MessageSendException e) {
-            log.error("Commit msg error >> {} - {}", message.toLoggingString(), e);
+            log.error("Commit message error >> {} - {}", message.toLoggingString(), e);
             response = ResultResponse.error(ErrorEnum.MQ_ERROR, e.getMessage());
         } catch (Exception e) {
-            log.error("Commit msg error >> {} - {}", message.toLoggingString(), e);
+            log.error("Commit message error >> {} - {}", message.toLoggingString(), e);
             response = ResultResponse.error(e.getMessage());
         }
         log.info("Commit message response:{}", response);
         return response;
     }
+
+    @Override
+    public ResultResponse<MessageResult> sendTransactionMessageToQueue(Message message) {
+        QueueMessage queueMessage = QueueMessage.builder().topic(message.getTopic()).tag(message.getTag())
+                .key(message.getKey()).body(message.getContent().getBytes(StandardCharsets.UTF_8)).build();
+        ResultResponse response = ResultResponse.success();
+        try {
+            log.info("Commit transaction message to queue:{}", message.toLoggingString());
+            SendMessageResult sendMessageResult = ExtensionLoader.getExtensionLoader(MessageProducer.class)
+                    .getByName(RocketMqConstant.rocketMqQueue).sendTransactionMessage(queueMessage);
+            response.setData(sendMessageResult);
+        } catch (MessageSendException e) {
+            log.error("Commit transaction message error >> {} - {}", message.toLoggingString(), e);
+            response = ResultResponse.error(ErrorEnum.MQ_ERROR, e.getMessage());
+        } catch (Exception e) {
+            log.error("Commit transaction message error >> {} - {}", message.toLoggingString(), e);
+            response = ResultResponse.error(e.getMessage());
+        }
+        log.info("Commit transaction message response:{}", response);
+        return response;
+    }
+
 }

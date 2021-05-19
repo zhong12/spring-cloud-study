@@ -30,4 +30,12 @@ public interface MessageProducer {
      * @throws MessageSendException
      */
     void sendOneway(QueueMessage queueMessage);
+
+    /**
+     * Send Transaction messages
+     *
+     * @param queueMessage
+     * @return
+     */
+    SendMessageResult sendTransactionMessage(QueueMessage queueMessage);
 }

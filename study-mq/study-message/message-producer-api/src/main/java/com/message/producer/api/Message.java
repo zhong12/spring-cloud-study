@@ -41,6 +41,10 @@ public class Message implements Serializable {
      * createTime
      */
     private Long createTime = System.currentTimeMillis();
+    /**
+     * transactionId
+     */
+    private String transactionId;
 
     /**
      * toLoggingString

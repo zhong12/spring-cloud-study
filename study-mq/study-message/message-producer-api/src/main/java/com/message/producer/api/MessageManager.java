@@ -26,4 +26,12 @@ public interface MessageManager {
      * @return
      */
     ResultResponse<MessageResult> sendMessageToQueue(Message message, boolean isSynchronization);
+
+    /**
+     * send transaction message queue
+     *
+     * @param message
+     * @return
+     */
+    ResultResponse<MessageResult> sendTransactionMessageToQueue(Message message);
 }

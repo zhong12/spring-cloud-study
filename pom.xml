@@ -51,6 +51,7 @@
         <pagehelper.version>5.0.0</pagehelper.version>
         <dynamic.datasource.boot.version>2.5.4</dynamic.datasource.boot.version>
         <rocketmq-client.version>4.3.0</rocketmq-client.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 
     <dependencyManagement>
@@ -168,7 +169,7 @@
             <dependency>
                 <groupId>org.apache.commons</groupId>
                 <artifactId>commons-collections4</artifactId>
-                <version>${commons.collections4.version}</version>
+                <version>${commons-collections4.version}</version>
             </dependency>
             <!--fastjson-->
             <dependency>

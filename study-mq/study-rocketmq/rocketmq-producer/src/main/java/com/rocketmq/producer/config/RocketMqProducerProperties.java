@@ -5,11 +5,10 @@ import com.study.common.exception.MessageSendException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.rocketmq.client.exception.MQClientException;
-import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.apache.rocketmq.client.producer.MQProducer;
+import org.apache.rocketmq.client.producer.*;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -47,7 +46,7 @@ public class RocketMqProducerProperties {
     @Value("${rocketmq.producer.retryTimesWhenSendFailed:2}")
     private Integer retryTimesWhenSendFailed;
 
-    @Bean
+    @Bean(value = "getRocketMQProducer")
     @ConditionalOnMissingBean(MQProducer.class)
     public MQProducer getRocketMQProducer() throws MessageSendException {
         if (StringUtils.isEmpty(this.groupName)) {
@@ -65,6 +64,7 @@ public class RocketMqProducerProperties {
             producer.setSendMsgTimeout(this.sendMsgTimeout);
         }
         producer.setVipChannelEnabled(false);
+        producer.setInstanceName(this.groupName + "123");
         // If the message fails to be sent, set the number of retries, which is 2 by default
         if (this.retryTimesWhenSendFailed != null) {
             producer.setRetryTimesWhenSendFailed(this.retryTimesWhenSendFailed);
@@ -76,6 +76,28 @@ public class RocketMqProducerProperties {
             log.error(String.format("producer is error {}", e.getMessage(), e));
             throw new MessageSendException(ErrorEnum.MQ_ERROR, e);
         }
+        return producer;
+    }
+
+    @Bean(value = "getTransactionMQProducer")
+    @ConditionalOnMissingBean(TransactionMQProducer.class)
+    public TransactionMQProducer getTransactionMQProducer() throws MessageSendException {
+        if (StringUtils.isEmpty(this.groupName)) {
+            throw new MessageSendException(ErrorEnum.MQ_ERROR, "groupName is blank", true);
+        }
+        if (StringUtils.isEmpty(this.nameSrvAddr)) {
+            throw new MessageSendException(ErrorEnum.MQ_ERROR, "nameServerAddr is blank", true);
+        }
+        TransactionMQProducer producer = new TransactionMQProducer(this.groupName);
+        producer.setNamesrvAddr(this.nameSrvAddr);
+        producer.setInstanceName(this.groupName+"456");
+        if (this.maxMessageSize != null) {
+            producer.setMaxMessageSize(this.maxMessageSize);
+        }
+        if (this.sendMsgTimeout != null) {
+            producer.setSendMsgTimeout(this.sendMsgTimeout);
+        }
+        producer.setVipChannelEnabled(false);
         return producer;
     }
 }
