@@ -39,11 +39,6 @@
                 <artifactId>study-bootstrap</artifactId>
                 <version>${project.version}</version>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>com.github.brilliant-zhong</groupId>-->
-<!--                <artifactId>study-rocketmq</artifactId>-->
-<!--                <version>${project.version}</version>-->
-<!--            </dependency>-->
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-producer</artifactId>
