@@ -25,6 +25,10 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>study-common</artifactId>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -86,23 +90,18 @@
 
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
-                <artifactId>study-common</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>user-dal</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-producer-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-consumer-starter</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.baomidou</groupId>

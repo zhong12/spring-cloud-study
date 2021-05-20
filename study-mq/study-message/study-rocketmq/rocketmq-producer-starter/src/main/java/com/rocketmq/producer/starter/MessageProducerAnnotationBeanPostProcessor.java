@@ -1,6 +1,5 @@
 package com.rocketmq.producer.starter;
 
-import com.message.consumer.api.RootMessageConsumer;
 import com.message.producer.api.ProducerTransactionListener;
 import com.message.producer.api.TransactionMessageListener;
 import com.message.queue.api.producer.TransactionMessageProducerConfig;

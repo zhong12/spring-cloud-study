@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>study-message</artifactId>
+        <artifactId>study-rocketmq</artifactId>
         <groupId>com.github.brilliant-zhong</groupId>
         <version>1.0.0-RELEASE</version>
         <relativePath>../pom.xml</relativePath>

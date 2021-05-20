@@ -3,22 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>study-message</artifactId>
+        <artifactId>study-rocketmq</artifactId>
         <groupId>com.github.brilliant-zhong</groupId>
         <version>1.0.0-RELEASE</version>
-        <relativePath>../pom.xml</relativePath>
     </parent>
     <packaging>jar</packaging>
     <artifactId>rocketmq-producer-starter</artifactId>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>message-producer-api</artifactId>
-        </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
             <artifactId>study-extension</artifactId>
@@ -29,7 +20,11 @@
         </dependency>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>study-bootstrap</artifactId>
+            <artifactId>message-producer-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>message-queue-api</artifactId>
         </dependency>
     </dependencies>
 </project>

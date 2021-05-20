@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <artifactId>study-mq</artifactId>
+        <artifactId>study-message</artifactId>
         <groupId>com.github.brilliant-zhong</groupId>
         <version>1.0.0-RELEASE</version>
         <relativePath>../pom.xml</relativePath>
@@ -11,6 +11,8 @@
     <modules>
         <module>rocketmq-producer</module>
         <module>rocketmq-consumer</module>
+        <module>rocketmq-producer-starter</module>
+        <module>rocketmq-consumer-starter</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-rocketmq</artifactId>
@@ -19,12 +21,17 @@
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>mq-common</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>rocketmq-producer</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.brilliant-zhong</groupId>
+                <artifactId>rocketmq-consumer</artifactId>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.rocketmq</groupId>
@@ -34,22 +41,22 @@
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>message-queue-api</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>study-bootstrap</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>message-consumer-api</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>message-producer-api</artifactId>
-                <version>${project.version}</version>
+                <version>${spring-cloud-study.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
