@@ -53,7 +53,7 @@ public class UserController {
         return response;
     }
 
-    @ApiOperation(value = "通过name发送mq消息")
+    @ApiOperation(value = "通过name发送mq消息--事务消息")
     @GetMapping("/sendTransaction/{name}/{key}")
     public ResultResponse<MessageResult> sendTransaction(@PathVariable("name") String name, @PathVariable("key") String key) {
         ResultResponse<MessageResult> response = mqSend.send(name, key, true);
