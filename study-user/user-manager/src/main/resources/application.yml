@@ -1,1 +1,17 @@
 
+server:
+  port: 8083 #服务端口
+spring:
+  application:
+    name: user-manager
+
+eureka:
+  client:
+    register-with-eureka: true  #服务注册开关
+    fetch-registry: true #服务发现开关
+    serviceUrl:
+      defaultZone: ${eureka.url:http://localhost:8761/eureka/}
+  instance:
+    prefer-ip-address: true #将自己的ip地址注册到Eureka服务中
+    ip-address: ${IP_ADDRESS:127.0.0.1}
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}

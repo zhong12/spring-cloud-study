@@ -18,7 +18,6 @@
         <module>study-user</module>
         <module>study-config</module>
         <module>study-mq</module>
-        <module>study-cache</module>
     </modules>
 
     <parent>
@@ -53,6 +52,7 @@
         <dynamic.datasource.boot.version>2.5.4</dynamic.datasource.boot.version>
         <rocketmq-client.version>4.3.0</rocketmq-client.version>
         <commons-collections4.version>4.4</commons-collections4.version>
+        <jedis.version>2.9.0</jedis.version>
     </properties>
 
     <dependencyManagement>
