@@ -1,0 +1,13 @@
+# 端口
+server:
+  port: 8762
+
+# 应用名称
+spring:
+  application:
+    name: registry-consul
+
+  cloud:
+    consul:
+      host: localhost
+      port: 8500

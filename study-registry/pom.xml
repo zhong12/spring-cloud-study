@@ -11,6 +11,7 @@
     <modules>
         <module>registry-eureka</module>
         <module>registry-zookeeper</module>
+        <module>registry-consul</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-registry</artifactId>
@@ -38,6 +39,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
                 <version>${spring-cloud-zookeeper.version}</version>
+            </dependency>
+            <!-- spring consul-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-consul-discovery</artifactId>
+                <version>${spring-cloud-consul.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
