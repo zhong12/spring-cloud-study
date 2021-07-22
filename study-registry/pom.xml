@@ -10,6 +10,7 @@
     </parent>
     <modules>
         <module>registry-eureka</module>
+        <module>registry-zookeeper</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-registry</artifactId>
@@ -26,10 +27,17 @@
     </dependencies>
     <dependencyManagement>
         <dependencies>
-            <!--eureka-->
+            <!-- spring eureka-server -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring-cloud-eureka.version}</version>
+            </dependency>
+            <!-- spring zookeeper-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+                <version>${spring-cloud-zookeeper.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

@@ -5,7 +5,7 @@ server:
 # 应用名称
 spring:
   application:
-    name: study-registry
+    name: registry-eureka
 
 eureka:
   instance:

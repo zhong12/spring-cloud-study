@@ -1,0 +1,14 @@
+# 端口
+server:
+  port: 8761
+
+# 应用名称
+spring:
+  application:
+    name: registry-zookeeper
+
+  cloud:
+    zookeeper:
+      # 集群模式用逗号隔开
+      connect-string: ${zookeeper.host:localhost}:${zookeeper.port:2181}
+      connection-timeout: 1000

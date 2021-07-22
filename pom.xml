@@ -37,6 +37,7 @@
         <spring-boot.version>2.4.5</spring-boot.version>
         <spring-cloud-openfeign.version>3.0.2</spring-cloud-openfeign.version>
         <spring-cloud-eureka.version>3.0.2</spring-cloud-eureka.version>
+        <spring-cloud-zookeeper.version>3.0.2</spring-cloud-zookeeper.version>
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.0.7.1</mybatis-plus-boot-starter.version>
         <springfox-swagger2.version>2.6.0</springfox-swagger2.version>
@@ -121,6 +122,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
                 <version>${spring-cloud-eureka.version}</version>
+            </dependency>
+            <!-- spring zookeeper-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+                <version>${spring-cloud-zookeeper.version}</version>
             </dependency>
             <!-- mysql driver -->
             <dependency>
