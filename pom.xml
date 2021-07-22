@@ -36,6 +36,7 @@
         <spring-boot-admin.version>2.4.0</spring-boot-admin.version>
         <spring-boot.version>2.4.5</spring-boot.version>
         <spring-cloud-openfeign.version>3.0.2</spring-cloud-openfeign.version>
+        <spring-cloud-eureka.version>3.0.2</spring-cloud-eureka.version>
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.0.7.1</mybatis-plus-boot-starter.version>
         <springfox-swagger2.version>2.6.0</springfox-swagger2.version>
@@ -55,60 +56,34 @@
         <jedis.version>2.9.0</jedis.version>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-        </dependency>
-    </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <!-- spring boot -->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter</artifactId>-->
-<!--                <version>${spring-boot.version}</version>-->
-<!--            </dependency>-->
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <!-- spring boot admin -->
-<!--            <dependency>-->
-<!--                <groupId>de.codecentric</groupId>-->
-<!--                <artifactId>spring-boot-admin-dependencies</artifactId>-->
-<!--                <version>${spring-boot-admin.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-dependencies</artifactId>
+                <version>${spring-boot-admin.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <!-- spring boot redis -->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-starter-data-redis</artifactId>-->
-<!--                <version>${spring-boot.version}</version>-->
-<!--            </dependency>-->
-
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
             <!-- spring boot openfeign -->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-starter-openfeign</artifactId>-->
-<!--                <version>${spring-cloud-openfeign.version}</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-openfeign</artifactId>
+                <version>${spring-cloud-openfeign.version}</version>
+            </dependency>
             <!-- spring cloud -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
@@ -123,24 +98,30 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>junit</groupId>-->
-<!--                <artifactId>junit</artifactId>-->
-<!--                <version>${junit.version}</version>-->
-<!--                <scope>test</scope>-->
-<!--            </dependency>-->
-            <!-- spring security oauth -->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.security.oauth</groupId>-->
-<!--                <artifactId>spring-security-oauth2</artifactId>-->
-<!--                <version>${spring-security-oauth2.version}</version>-->
-<!--            </dependency>-->
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-autoconfigure</artifactId>-->
-<!--                <version>${spring-boot.version}</version>-->
-<!--            </dependency>-->
-
+            <!-- spring junit -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- spring autoconfigure -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-autoconfigure</artifactId>
+                <version>${spring-boot.version}</version>
+            </dependency>
+            <!-- spring eureka -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+                <version>${spring-cloud-eureka.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+                <version>${spring-cloud-eureka.version}</version>
+            </dependency>
             <!-- mysql driver -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -267,6 +248,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -285,55 +267,19 @@
                 </includes>
                 <filtering>false</filtering>
             </resource>
-
             <!-- 项目编译打包时将resource目录中的配置文件进行打包，默认是不进行打包的 -->
             <resource>
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.properties</include>
+                    <include>**/*.yml</include>
                     <include>**/*.xml</include>
+                    <include>**/*.factories</include>
                     <include>**/*.tld</include>
+                    <include>**/META-INF/services/*</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
         </resources>
     </build>
-<!--    <build>-->
-<!--        <finalName>${project.artifactId}</finalName>-->
-<!--        <plugins>-->
-<!--            <plugin>-->
-<!--                <groupId>org.apache.maven.plugins</groupId>-->
-<!--                <artifactId>maven-surefire-plugin</artifactId>-->
-<!--                <version>3.0.0-M5</version>-->
-<!--                <configuration>-->
-<!--                    <skip>true</skip>-->
-<!--                    <includes>-->
-<!--                        <include>**/*Tester.java</include>-->
-<!--                        <include>**/*Test.java</include>-->
-<!--                    </includes>-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-<!--        </plugins>-->
-<!--        <pluginManagement>-->
-<!--            <plugins>-->
-<!--                &lt;!&ndash; 要将源码放上去，需要加入这个插件 &ndash;&gt;-->
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-source-plugin</artifactId>-->
-<!--                    <version>2.1</version>-->
-<!--                    <configuration>-->
-<!--                        <attach>true</attach>-->
-<!--                    </configuration>-->
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <phase>compile</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>jar</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
-<!--            </plugins>-->
-<!--        </pluginManagement>-->
-<!--    </build>-->
 </project>
