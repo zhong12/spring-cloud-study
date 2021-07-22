@@ -1,0 +1,13 @@
+# 端口
+server:
+  port: 8763
+
+spring:
+  application:
+    name: registry-cloud-foundry
+  cloud:
+    cloudfoundry:
+      username: root
+      password: 123456
+      org: org
+      space: space

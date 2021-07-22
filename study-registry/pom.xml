@@ -12,6 +12,7 @@
         <module>registry-eureka</module>
         <module>registry-zookeeper</module>
         <module>registry-consul</module>
+        <module>registry-cloud-foundry</module>
     </modules>
     <packaging>pom</packaging>
     <artifactId>study-registry</artifactId>
@@ -24,6 +25,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.brilliant-zhong</groupId>
+            <artifactId>study-common</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
@@ -45,6 +50,12 @@
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-starter-consul-discovery</artifactId>
                 <version>${spring-cloud-consul.version}</version>
+            </dependency>
+            <!-- spring cloudfoundry-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-cloudfoundry-discovery</artifactId>
+                <version>${spring-cloud-cloudfoundry.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

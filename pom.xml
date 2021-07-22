@@ -39,6 +39,7 @@
         <spring-cloud-eureka.version>3.0.2</spring-cloud-eureka.version>
         <spring-cloud-zookeeper.version>3.0.2</spring-cloud-zookeeper.version>
         <spring-cloud-consul.version>3.0.2</spring-cloud-consul.version>
+        <spring-cloud-cloudfoundry.version>3.0.1</spring-cloud-cloudfoundry.version>
         <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.0.7.1</mybatis-plus-boot-starter.version>
         <springfox-swagger2.version>2.6.0</springfox-swagger2.version>
@@ -136,7 +137,12 @@
                 <artifactId>spring-cloud-starter-consul-discovery</artifactId>
                 <version>${spring-cloud-consul.version}</version>
             </dependency>
-
+            <!-- spring cloudfoundry-discovery -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-cloudfoundry-discovery</artifactId>
+                <version>${spring-cloud-cloudfoundry.version}</version>
+            </dependency>
             <!-- mysql driver -->
             <dependency>
                 <groupId>mysql</groupId>
