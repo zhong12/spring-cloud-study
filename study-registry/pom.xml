@@ -2,13 +2,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
     <parent>
         <artifactId>spring-cloud-study</artifactId>
         <groupId>com.github.brilliant-zhong</groupId>
         <version>1.0.0-RELEASE</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
+    <modules>
+        <module>registry-eureka</module>
+    </modules>
+    <packaging>pom</packaging>
     <artifactId>study-registry</artifactId>
     <dependencies>
         <dependency>
@@ -20,20 +23,14 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-        <!-- 服务注册中心 -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
-
+    <dependencyManagement>
+        <dependencies>
+            <!--eureka-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>

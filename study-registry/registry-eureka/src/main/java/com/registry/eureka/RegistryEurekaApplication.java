@@ -1,18 +1,15 @@
-package com.study.registry;
+package com.registry.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
-/**
- * @author zhongjing
- */
 @EnableEurekaServer
 @SpringBootApplication
-public class StudyRegistryApplication {
+public class RegistryEurekaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(StudyRegistryApplication.class, args);
+        SpringApplication.run(RegistryEurekaApplication.class, args);
     }
 
 }
