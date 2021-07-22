@@ -1,10 +1,8 @@
 package com.user.dal.mapper.dao;
 
-import com.baomidou.dynamic.datasource.annotation.DS;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.user.dal.entity.Config;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.context.annotation.Primary;
 
 /**
  * @Author: zj
