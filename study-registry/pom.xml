@@ -57,6 +57,12 @@
                 <artifactId>spring-cloud-cloudfoundry-discovery</artifactId>
                 <version>${spring-cloud-cloudfoundry.version}</version>
             </dependency>
+            <!-- spring alibaba-nacos-discovery -->
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+                <version>${spring-cloud-alibaba-nacos.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

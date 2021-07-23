@@ -1,0 +1,11 @@
+# 端口
+server:
+  port: 8763
+
+spring:
+  application:
+    name: registry-nacos
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
