@@ -18,6 +18,7 @@
         <module>study-user</module>
         <module>study-config</module>
         <module>study-mq</module>
+        <module>study-cache</module>
     </modules>
 
     <parent>
