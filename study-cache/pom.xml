@@ -13,6 +13,7 @@
     <modules>
         <module>cache-common</module>
         <module>study-lru-map</module>
+        <module>study-ehcache</module>
     </modules>
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,8 +22,7 @@
     <dependencies>
         <dependency>
             <groupId>com.github.brilliant-zhong</groupId>
-            <artifactId>mq-common</artifactId>
-            <version>${project.version}</version>
+            <artifactId>study-common</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -40,6 +40,11 @@
                 <groupId>com.github.brilliant-zhong</groupId>
                 <artifactId>cache-common</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

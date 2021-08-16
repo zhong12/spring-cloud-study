@@ -19,6 +19,7 @@
         <module>study-config</module>
         <module>study-mq</module>
         <module>study-cache</module>
+        <module>study-routing</module>
     </modules>
 
     <parent>
@@ -60,6 +61,7 @@
         <rocketmq-client.version>4.3.0</rocketmq-client.version>
         <commons-collections4.version>4.4</commons-collections4.version>
         <jedis.version>2.9.0</jedis.version>
+        <ehcache.version>2.9.1</ehcache.version>
     </properties>
 
     <dependencyManagement>
@@ -104,14 +106,6 @@
                     </exclusion>
                 </exclusions>
             </dependency>
-            <!--spring-cloud-alibaba-->
-<!--            <dependency>-->
-<!--                <groupId>com.alibaba.cloud</groupId>-->
-<!--                <artifactId>spring-cloud-alibaba-dependencies</artifactId>-->
-<!--                <version>${spring-cloud-alibaba.version}</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
             <!-- spring junit -->
             <dependency>
                 <groupId>junit</groupId>
@@ -210,6 +204,12 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4j.api.version}</version>
+            </dependency>
+            <!--ehcache-->
+            <dependency>
+                <groupId>net.sf.ehcache</groupId>
+                <artifactId>ehcache</artifactId>
+                <version>${ehcache.version}</version>
             </dependency>
 
             <!--study-->
