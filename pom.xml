@@ -19,7 +19,6 @@
         <module>study-config</module>
         <module>study-mq</module>
         <module>study-cache</module>
-        <module>study-routing</module>
     </modules>
 
     <parent>
