@@ -43,7 +43,7 @@
         <spring-cloud-consul.version>3.0.2</spring-cloud-consul.version>
         <spring-cloud-cloudfoundry.version>3.0.1</spring-cloud-cloudfoundry.version>
         <spring-cloud-alibaba-nacos.version>2021.1</spring-cloud-alibaba-nacos.version>
-        <mysql-connector-java.version>8.0.16</mysql-connector-java.version>
+        <mysql-connector-java.version>8.0.28</mysql-connector-java.version>
         <mybatis-plus-boot-starter.version>3.0.7.1</mybatis-plus-boot-starter.version>
         <springfox-swagger2.version>2.6.0</springfox-swagger2.version>
         <springfox-swagger-ui.version>2.2.2</springfox-swagger-ui.version>
